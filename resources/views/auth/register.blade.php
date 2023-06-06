@@ -57,9 +57,22 @@
                             <label for="dateofbirth" class="col-md-4 col-form-label text-md-end">{{ __('Date of Birth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="dateofbirth" value="{{ old('date') }}" required>
+                                <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date_of_birth" value="{{ old('date') }}" required>
 
                                 @error('date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="about_me" class="col-md-4 col-form-label text-md-end">{{ __('About me') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea name="about_me" id="about_me" type="text" class="form-control @error('about_me') is-invalid @enderror" value="{{ old('about_me') }}" required cols="39" rows="5"></textarea>
+                                @error('about_me')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

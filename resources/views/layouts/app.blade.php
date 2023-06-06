@@ -13,12 +13,22 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{{ asset ('assets/favicon.ico') }}" />
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ asset ('css/styles.css') }}" rel="stylesheet" />
+
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{{ asset ('js/scripts.js') }}"></script>
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     What is the name of the site?
@@ -43,17 +53,16 @@
                                     <a class="nav-link" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
                                 </li>
                             @endif
-                            @if (Route::has('...'))
+                            @if (Route::has('posts/index'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('...') }}">{{ __('Categories') }}</a>
+                                    <a class="nav-link" href="{{ route('posts/index') }}">{{ __('Posts') }}</a>
                                 </li>
                             @endif
+
                         @endguest
 
-                        <!-- Has an account -->
-                        
-                    </ul> 
-                    
+                    </ul>
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -71,12 +80,22 @@
                                 </li>
                             @endif
                         @else
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                    <a class="dropdown-item" href="{{ route('users/profile', auth()->user()->name) }}">{{ __('Profile') }}</a>
+
+                                    <a class="dropdown-item" href="{{ route('posts/index') }}">{{ __('Posts') }}</a>
+
+                                    <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
+
+                                    <a class="dropdown-item" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -93,6 +112,7 @@
                 </div>
             </div>
         </nav>
+
 
         <main class="py-4">
             @yield('content')

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ProfileController;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,8 @@ use App\Http\Controllers\LikeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $posts = Post::all();
+    return view('welcome', compact('posts'));
 });
 
 Auth::routes();
@@ -32,12 +35,17 @@ Route::post('partials/contact', [App\http\Controllers\ContactController::class, 
 Route::get('partials/about', [App\http\Controllers\AboutController::class, 'index'])->name('partials/about');
 
 //Posts routes
-Route::get('/posts', [PostController::class, 'index'])->name('posts');
-Route::resource('posts', PostController::class);
+Route::get('posts/index', [App\Http\Controllers\PostController::class, 'index'])->name('posts/index');
+Route::resource('/posts', PostController::class);
 
 //Likes routes
-Route::get('like/{postid', [LikeController::class, 'like'])->name('like');
+Route::get('like/{postid}', [LikeController::class, 'like'])->name('like');
 
 //Profile routes
+Route::get('users/{name}', [ProfileController::class, 'index'])->name('users/profile');
+Route::post('users/profile', [App\Http\Controllers\ProfileController::class, 'store'])->name('users.profile.store');
+Route::get('users/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('users.edit');
+
+//Route::get('users/profile', [App\http\Controllers\ProfileController::class, 'index'])->name('users/profile');
 
 //Admin routes

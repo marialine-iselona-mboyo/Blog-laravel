@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Like;
 use App\Models\Post;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class LikeController extends Controller
 {
@@ -24,7 +24,7 @@ class LikeController extends Controller
       $like = Like::where('post_id', '=', $postId)->where('user_id', '=', Auth::user()->id)->first();
 
       if($like != NULL){
-        abort(403, 'Cannot like a post more than once');        
+        abort(403, 'Cannot like a post more than once');
       }
 
       $like = new Like;
@@ -32,6 +32,6 @@ class LikeController extends Controller
       $like->post_id = $postId;
       $like->save();
 
-      return redirect()->route('index')->with('status', 'Post liked');
+      return redirect()->route('posts/index')->with('status', 'Post liked');
     }
 }

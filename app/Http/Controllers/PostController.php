@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Like;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -36,14 +36,14 @@ class PostController extends Controller
         'content'     => 'required|min:20',
       ]);
 
-      // bij foute content komen we nooit hier, gaat terug naar form met error
-
+      // If error
       $post = new Post;
       $post->title = $validated['title'];
       $post->message = $validated['content'];
       $post->user_id = Auth::user()->id;
       $post->save();
 
+      // Adding image to post
       $imageName = $post->id .'.'. $request->file->getClientOriginalExtension();
       $request->file->move(public_path('/uploads'), $imageName);
 
@@ -82,12 +82,12 @@ class PostController extends Controller
       $post->message = $validated['content'];
       $post->save();
 
-      return redirect()->route('index')->with('status', 'Post edited');
+      return redirect()->route('posts/index')->with('status', 'Post edited');
 
     }
 
     public function destroy($id){
-      if(!Auth::user()->is_admin){
+      if(Auth::user()->is_admin){
         abort(403, 'Only admins can delete posts');
       }
 
@@ -95,6 +95,6 @@ class PostController extends Controller
       $likes = Like::where('post_id', '=', $post->id)->delete();
       $post->delete();
 
-      return redirect()->route('index')->with('status', 'Post deleted');
+      return redirect()->route('posts/index')->with('status', 'Post deleted');
     }
 }

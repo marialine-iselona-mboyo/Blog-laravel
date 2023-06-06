@@ -9,7 +9,7 @@
 
                 <div class="card-body">
 
-                        <small>Gepost door <a href="{{ route('profile', $post->user->name) }}">{{ $post->user->name }}</a> op {{ $post->created_at->format('d/m/Y \o\m H:i') }}</small><br>
+                        <small>Posted by <a href="{{ route('users/profile', $post->user->name) }}">{{ $post->user->name }}</a> the {{ $post->created_at->format('d/m/Y \a\t H:i') }}</small><br>
 <br>
                         {{ $post->message }}
 
@@ -22,7 +22,7 @@
                           @endif
                           <br>
                         @endauth
-                        Post heeft {{ $post->likes()->count() }} likes
+                        Post has {{ $post->likes()->count() }} likes
 
                         @auth
                           @if(Auth::user()->is_admin)
@@ -30,7 +30,7 @@
                             <form method="post" action="{{ route('posts.destroy', $post->id) }}">
                               @csrf
                               @method('DELETE')
-                              <input type="submit" value="DELETE POST" style="background-color: red;" onclick="return confirm('Are you sure you want to delete this post?');">
+                              <input type="submit" value="Delete Post" onclick="return confirm('Are you sure you want to delete this post?');">
                             </form>
                           @endif
                         @endauth

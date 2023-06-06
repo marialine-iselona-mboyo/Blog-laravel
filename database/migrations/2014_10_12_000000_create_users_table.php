@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->date('date_of_birth')->format('d/m/Y');
+            $table->date('date_of_birth')->nullable();
+            $table->text('about_me');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('avatar')->nullable();
             $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();

@@ -22,7 +22,9 @@ class User extends Authenticatable
         'username',
         'email',
         'date_of_birth',
+        'about_me',
         'password',
+        'avatar',
         'is_admin'
     ];
 
@@ -45,4 +47,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function posts(){
+        return $this->hasMany('App\Models\Post');
+    }
+  
+    public function likes(){
+        return $this->hasMany('App\Models\Like');
+    }
 }
