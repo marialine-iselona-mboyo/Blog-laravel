@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\CategoryController;
 use App\Models\Post;
 
 /*
@@ -34,6 +35,7 @@ Route::get('partials/contact', [App\http\Controllers\ContactController::class, '
 Route::post('partials/contact', [App\http\Controllers\ContactController::class, 'store'])->name('partials/contact.store');
 
 //About routes
+//Route::view('about', 'index)->name('about'); //becase it is an static page
 Route::get('partials/about', [App\http\Controllers\AboutController::class, 'index'])->name('partials/about');
 
 //Posts routes
@@ -49,8 +51,12 @@ Route::resource('/users', ProfileController::class);
 
 //FAQ routes
 Route::get('/faq', [App\Http\Controllers\FAQController::class, 'index'])->name('faq/index');
-//Route::get('/faq', 'FAQController@index')->name('faq.index');
-Route::resource('faq', FAQController::class)->except(['index']);
+Route::resource('/faq', FAQController::class)->except(['index']);
 
+//Categories routes
+Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories/index');
+Route::resource('categories', CategoryController::class)->except(['index']);
+//Route::get('/category', [App\Http\Controllers\CategoryController::class, 'index'])->name('faq/index');
+//Route::resource('/category', CategoryController::class)->except(['index']);
 
 //Admin routes

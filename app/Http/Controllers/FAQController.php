@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\FAQ;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FAQController extends Controller
 {
@@ -14,10 +15,10 @@ class FAQController extends Controller
      *
      * @return void
      */
-    //public function __construct()
-    //{
-    //    $this->middleware('auth', ['except'=>['index']]);
-    //}
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=>['index']]);
+    }
 
 
     /**
@@ -35,6 +36,10 @@ class FAQController extends Controller
      */
     public function create()
     {
+        /*if(!Auth::user()->is_admin){
+            abort(403, 'Only admins can create FAQ questions');
+        }*/
+
         $categories = Category::all();
 
         return view('faq.create', compact('categories'));
@@ -57,7 +62,7 @@ class FAQController extends Controller
             'answer' => $request->input('answer'),
         ]);
 
-        return redirect()->route('faq.index')->with('success', 'The has been succesfully added');
+        return redirect()->route('faq/index')->with('success', 'The has been succesfully added');
     }
 
     /**
@@ -73,7 +78,12 @@ class FAQController extends Controller
      */
     public function edit(string $id)
     {
+        $faq = FAQ::find($id);
         $categories = Category::all();
+
+        if($faq->user_id != Auth::user()->id){
+            abort(403);
+        }
 
         return view('faq.edit', compact('faq', 'categories'));
     }
@@ -83,6 +93,12 @@ class FAQController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $faq = FAQ::find($id);
+
+        if($faq->user_id != Auth::user()->id){
+            abort(403);
+        }
+
         $request->validate([
             'category_id' => 'required',
             'question' => 'required',
@@ -94,7 +110,7 @@ class FAQController extends Controller
         $faq->answer = $request->input('answer');
         $faq->save();
 
-        return redirect()->route('faq.index')->with('success', 'La question a été mise à jour avec succès.');
+        return redirect()->route('faq/index')->with('success', 'La question a été mise à jour avec succès.');
     }
 
     /**
@@ -102,8 +118,14 @@ class FAQController extends Controller
      */
     public function destroy(string $id)
     {
+        if(!Auth::user()->is_admin){
+            abort(403, 'Only admins can delete FAQ Questions');
+          }
+
+        $faq = FAQ::find($id);
+
         $faq->delete();
 
-        return redirect()->route('faq.index')->with('success', 'La question a été supprimée avec succès.');
+        return redirect()->route('faq/index')->with('success', 'La question a été supprimée avec succès.');
     }
 }

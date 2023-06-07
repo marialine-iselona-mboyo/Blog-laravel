@@ -19,10 +19,12 @@
                 <label for="question">Question</label>
                 <input type="text" name="question" id="question" class="form-control" required>
             </div>
+            @if(Auth::user()->is_admin)
             <div class="form-group">
                 <label for="answer">Answer</label>
                 <textarea name="answer" id="answer" class="form-control" rows="5" required></textarea>
             </div>
+            @endif
             <button type="submit" class="btn btn-primary">Add question</button>
         </form>
     </div>

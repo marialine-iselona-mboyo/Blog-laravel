@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class CategoryController extends Controller
 {
@@ -12,7 +13,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+
+        return view('categories/index_cat', compact('categories'));
+
     }
 
     /**
@@ -20,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories/create_cat');
     }
 
     /**
@@ -28,7 +32,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|unique:categories',
+        ]);
+
+        /*Category::create($validatedData);
+        return redirect()->route('categories.index');*/
+
+        Category::create([
+            'name' => $request->input('name'),
+        ]);
+
+        return redirect()->route('categories/index_cat')->with('success', 'The category has been added');
+
+
     }
 
     /**
@@ -44,7 +61,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('categories/edit_cat', compact('category'));
     }
 
     /**
@@ -52,7 +69,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Category::find($id);
+
+        $request->validate([
+            'name' => 'required|unique:categories,name,' . $category->id,
+        ]);
+
+        $category->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('categories/index_cat')->with('success', 'The category has been modified');
+
     }
 
     /**
@@ -60,6 +88,10 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::find($id);
+
+        $category->delete();
+        return redirect()->route('categories/index_cat')->with('success', 'The category has been deleted');
+
     }
 }

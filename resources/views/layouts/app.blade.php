@@ -94,6 +94,12 @@
 
                                     <a class="dropdown-item" href="{{ route('faq/index') }}">{{ __('FAQ') }}</a>
 
+                                    @auth
+                                        @if (Auth::user()->is_admin)
+                                        <a class="dropdown-item" href="{{ route('categories/index') }}">{{ __('Categories') }}</a>
+                                        @endif
+                                    @endauth
+
                                     <a class="dropdown-item" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>

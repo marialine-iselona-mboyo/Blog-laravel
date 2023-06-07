@@ -20,6 +20,6 @@ class FAQ extends Model
         return $this->belongsTo(Category::class);
     }
 
-
+    protected $table = 'faqs';
 }
 

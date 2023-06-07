@@ -1,0 +1,19 @@
+@extends('layouts.app')
+
+@section('content')
+<h1>Create a Category</h1>
+<br><br>
+<form method="POST" action="{{ route('categories.store') }}">
+    @csrf
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Add Category</button>
+    </div>
+
+</form>
+@endsection
