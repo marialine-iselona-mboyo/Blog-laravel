@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FAQController;
 use App\Models\Post;
 
 /*
@@ -22,6 +23,7 @@ Route::get('/', function () {
     $posts = Post::all();
     return view('welcome', compact('posts'));
 });
+
 
 Auth::routes();
 
@@ -43,9 +45,12 @@ Route::get('like/{postid}', [LikeController::class, 'like'])->name('like');
 
 //Profile routes
 Route::get('users/{name}', [ProfileController::class, 'index'])->name('users/profile');
-Route::post('users/profile', [App\Http\Controllers\ProfileController::class, 'store'])->name('users.profile.store');
-Route::get('users/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('users.edit');
+Route::resource('/users', ProfileController::class);
 
-//Route::get('users/profile', [App\http\Controllers\ProfileController::class, 'index'])->name('users/profile');
+//FAQ routes
+Route::get('/faq', [App\Http\Controllers\FAQController::class, 'index'])->name('faq/index');
+//Route::get('/faq', 'FAQController@index')->name('faq.index');
+Route::resource('faq', FAQController::class)->except(['index']);
+
 
 //Admin routes

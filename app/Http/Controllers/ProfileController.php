@@ -29,6 +29,11 @@ class ProfileController extends Controller
         return view('users.profile', compact('user'));
     }
 
+    public function show($id){
+        $user = User::findOrFail($id);
+        return view('users.show', compact('user'));
+      }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -49,7 +54,7 @@ class ProfileController extends Controller
     {
 
         $user = Auth::user();
-        return view('edit', compact('user'));
+        return view('users/edit', compact('user'));
 
     }
 
@@ -62,10 +67,11 @@ class ProfileController extends Controller
         }
 
         $validated = $request->validate([
-            'username' => 'required|min:3',
-            'email' => 'required|min:10',
+            'username'      => 'required|min:3',
+            'email'         => 'required|min:10',
             'date_of_birth' => 'required|date',
-            'about_me' => 'required|min:20',
+            'about_me'      => 'required|min:20',
+            'update_at'     => now(),
         ]);
 
         $user->username = $validated['username'];

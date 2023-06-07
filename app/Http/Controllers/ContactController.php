@@ -13,10 +13,10 @@ class ContactController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth', ['except'=>['index']]);
-    }
+    //public function __construct()
+    //{
+    //    $this->middleware('auth', ['except'=>['index']]);
+    //}
 
     /**
      * Show the application dashboard.
@@ -27,7 +27,7 @@ class ContactController extends Controller
     {
         return view('partials/contact');
     }
-    
+
     //Store contact Form
     public function store(Request $request){
 
@@ -42,7 +42,7 @@ class ContactController extends Controller
         Contact::create($request->all());
 
         //Send mail to admin
-        \Mail::send('emails/contacts-message', array(
+        Mail::send('emails/contacts-message', array(
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'subject' => $request->get('subject'),

@@ -26,7 +26,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <!--<li class="nav-item"><a class="nav-link" href="#">Home</a></li>-->
                         <li class="nav-item"><a class="nav-link" href="{{ route('posts/index') }}">Posts</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('partials/about') }}">FAQ Page</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('faq/index') }}">FAQ Page</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('partials/contact') }}">Contact</a></li>
                     </ul>
 
@@ -37,7 +37,7 @@
                                     <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" style="text-decoration: none; color: grey">Profile</a>
                                 @else
                                     <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" style="text-decoration: none; color: grey">Log in</a>
-            
+
                                     @if (Route::has('register'))
                                         <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" style="text-decoration: none; color: grey">Register</a>
                                     @endif
@@ -46,7 +46,7 @@
                         @endif
                     </div>
                 </div>
-                
+
             </div>
         </nav>
         <!-- Page header with logo and tagline-->
@@ -65,11 +65,11 @@
                 <div class="col-lg-8">
                     <!-- Nested row for non-featured blog posts-->
                     <div class="row">
-                        
+
                         <!-- Blog post-->
                         @foreach ($posts as $post)
                         <div class="col-lg-6">
-                            
+
                             <div class="card mb-4">
 
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
@@ -86,12 +86,12 @@
                                 <hr>
                                 The post has {{ $post->likes()->count() }} likes
                             </div>
-                            
+
                         </div>
                         @endforeach
-    
+
                     </div>
-                    
+
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">

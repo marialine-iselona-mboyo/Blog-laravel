@@ -26,7 +26,7 @@
     <script src="{{ asset ('js/scripts.js') }}"></script>
 
 </head>
-<body>
+<body >
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
@@ -44,7 +44,7 @@
                         @guest
                             @if (Route::has('partials/about'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('partials/about') }}">{{ __('FAQ Page') }}</a>
+                                    <a class="nav-link" href="{{ route('faq/index') }}">{{ __('FAQ Page') }}</a>
                                 </li>
                             @endif
 
@@ -92,9 +92,11 @@
 
                                     <a class="dropdown-item" href="{{ route('posts/index') }}">{{ __('Posts') }}</a>
 
-                                    <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
+                                    <a class="dropdown-item" href="{{ route('faq/index') }}">{{ __('FAQ') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
+
+                                    <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -114,9 +116,10 @@
         </nav>
 
 
-        <main class="py-4">
+        <main class="py-4" style="margin:15px">
             @yield('content')
         </main>
+
     </div>
 </body>
 </html>

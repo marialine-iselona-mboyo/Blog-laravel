@@ -22,7 +22,7 @@
                         @endif
 
                         <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">Title</label>
+                            <label for="title" class="col-md-4 col-form-label text-md-right">Author</label>
 
                             <div class="col-md-6">
                                 <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autofocus>
@@ -36,10 +36,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">Image</label>
+                            <label for="image" class="col-md-4 col-form-label text-md-right">Image</label>
 
                             <div class="col-md-6">
-                                <input id="title" type="file" class="form-control @error('image') is-invalid @enderror" name="file" value="{{ old('file') }}" required >
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="file" value="{{ old('file') }}" required >
+
+                                <img src="/images/{{ Auth::user()->image }}" style="width:80px;margin-top: 10px;">
 
                                 @error('file')
                                     <span class="invalid-feedback" role="alert">
@@ -50,7 +52,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">Content</label>
+                            <label for="content" class="col-md-4 col-form-label text-md-right">Content</label>
 
                             <div class="col-md-6">
                                 <textarea name="content" required>{{ old('content') }}</textarea>

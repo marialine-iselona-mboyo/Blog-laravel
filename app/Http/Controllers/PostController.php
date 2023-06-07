@@ -26,6 +26,10 @@ class PostController extends Controller
     }
 
     public function create(){
+      if(!Auth::user()->is_admin){
+          abort(403, 'Only admins can create posts');
+      }
+
       return view('posts.create');
     }
 
@@ -76,6 +80,7 @@ class PostController extends Controller
       $validated = $request->validate([
         'title'       => 'required|min:3',
         'content'     => 'required|min:20',
+        'update_at'   => now(),
       ]);
 
       $post->title = $validated['title'];
@@ -87,7 +92,7 @@ class PostController extends Controller
     }
 
     public function destroy($id){
-      if(Auth::user()->is_admin){
+      if(!Auth::user()->is_admin){
         abort(403, 'Only admins can delete posts');
       }
 

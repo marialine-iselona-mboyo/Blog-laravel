@@ -45,11 +45,10 @@
                 <h3>About me</h3>
                   <p name="about_me" id="about_me" cols="50" rows="4">{{ $user->about_me}}</p>
                 <br><br>
-
-                <h5>Liked Posts</h5>
-                @foreach($user->likes as $like)
+                <h6>Liked Posts</h6>
+                  @foreach($user->likes as $like)
                     <a href="{{ route('posts.show', $like->post_id) }}">{{ $like->post->title }}</a><br>
-                @endforeach
+                  @endforeach
               </div>
             </div>
 
