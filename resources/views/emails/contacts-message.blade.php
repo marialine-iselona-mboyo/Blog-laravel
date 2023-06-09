@@ -1,8 +1,12 @@
-<h2>Hello</h2> <br>
-You have got an email from : {{ $name }} <br><br>
-User details: <br><br>
-Name: {{ $name }} <br>
-Email: {{ $email }} <br>
-Subject: {{ $subject }} <br>
-Message: {{ $user_query }} <br><br>
-Thanks
+@extends('layouts.app')
+
+@section('content')
+    <h2>Hello</h2> <br>
+    You have got an email from : {{ $name }} <br><br>
+    User details: <br><br>
+    Name: {{ $name }} <br>
+    Email: {{ $email }} <br>
+    Subject: {{ $subject }} <br>
+    Message: {{ $user_query }} <br><br>
+    Thanks
+@endsection

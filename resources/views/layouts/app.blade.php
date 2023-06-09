@@ -96,11 +96,12 @@
 
                                     @auth
                                         @if (Auth::user()->is_admin)
-                                        <a class="dropdown-item" href="{{ route('categories/index') }}">{{ __('Categories') }}</a>
+                                        <a class="dropdown-item" href="{{ route('categories/index_cat') }}">{{ __('Categories') }}</a>
+                                        <a class="dropdown-item" href="{{ route('admin/users') }}">{{ __('Users') }}</a>
+                                        <a class="dropdown-item" href="{{ route('emails/show-messages') }}">{{ __('Messages') }}</a>
                                         @endif
                                     @endauth
 
-                                    <a class="dropdown-item" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
 

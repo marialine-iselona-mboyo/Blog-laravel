@@ -22,6 +22,15 @@
     <div class="row">
         <div class="col-lg-6">
 
+
+            @auth
+            @if(Auth::user()->is_admin)
+                <a href="{{ route('posts.create') }}" class="btn btn-primary">Add Posts</a>
+            @endif
+            @endauth
+
+            <br><br>
+
             <div class="row">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -30,9 +39,11 @@
                 @endif
 
                 @foreach ($posts as $post)
-                <div>
-                    <div class="card mb-2">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                <div class="col-lg-6">
+                    <div class="card mb-4">
+                        <a href="{{ route('posts.show', $post->id) }}">
+                            <img class="card-img-top" src="/storage/images/{{$post->image}}" alt="..." />
+                        </a>
                         <div class="card-body">
                             <div class="small text-muted">
                                 <small>
@@ -66,11 +77,13 @@
                         </div>
                     </div>
                 </div>
-
                 @endforeach
+
             </div>
         </div>
     </div>
+
+
 </div>
 
 <!-- Footer-->

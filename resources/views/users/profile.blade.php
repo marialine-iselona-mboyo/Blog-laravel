@@ -5,18 +5,32 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col ">
           <div class="card">
-            <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
+            <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; ">
 
                 <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
-                        alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                        style="width: 150px; z-index: 1">
 
-                        <a href="{{ route('users.edit', ['user' => $user->id]) }}" style="z-index: 1;text-decoration: none; color: black;">
+                    <div class="row mb-3">
+
+                        <div class="col-md-6">
+
+                            <img src="/storage/avatars/{{ Auth::user()->avatar }}"
+                            style="width:110px; margin-left: 15px; margin-top:10px"
+                            class="d-flex flex-column">
+
+                            @error('avatar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <a href="{{ route('users.edit', ['user' => $user->id]) }}" style="z-index: 1;text-decoration: none; color: black;margin-top: 15px; margin-left: 15px">
                             <button type="button" style="padding: 5%; background-color: white; border-color: gray;">
                                 Edit profile
                             </button>
                         </a>
+
+                    </div>
 
                 </div>
 

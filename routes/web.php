@@ -7,6 +7,9 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\MessageController;
 use App\Models\Post;
 
 /*
@@ -20,6 +23,7 @@ use App\Models\Post;
 |
 */
 
+//Welcome page
 Route::get('/', function () {
     $posts = Post::all();
     return view('welcome', compact('posts'));
@@ -33,6 +37,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Contact routes
 Route::get('partials/contact', [App\http\Controllers\ContactController::class, 'index'])->name('partials/contact');
 Route::post('partials/contact', [App\http\Controllers\ContactController::class, 'store'])->name('partials/contact.store');
+//To show messages
+Route::get('emails/show-messages', [MessageController::class, 'index'])->name('emails/show-messages');
+Route::get('emails/messages/{id}', [MessageController::class, 'show'])->name('emails/show-messages.show');
 
 //About routes
 //Route::view('about', 'index)->name('about'); //becase it is an static page
@@ -45,6 +52,10 @@ Route::resource('/posts', PostController::class);
 //Likes routes
 Route::get('like/{postid}', [LikeController::class, 'like'])->name('like');
 
+//Comments routes
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
+
 //Profile routes
 Route::get('users/{name}', [ProfileController::class, 'index'])->name('users/profile');
 Route::resource('/users', ProfileController::class);
@@ -54,9 +65,13 @@ Route::get('/faq', [App\Http\Controllers\FAQController::class, 'index'])->name('
 Route::resource('/faq', FAQController::class)->except(['index']);
 
 //Categories routes
-Route::get('/categories', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories/index');
-Route::resource('categories', CategoryController::class)->except(['index']);
-//Route::get('/category', [App\Http\Controllers\CategoryController::class, 'index'])->name('faq/index');
-//Route::resource('/category', CategoryController::class)->except(['index']);
+Route::get('categories/index_cat', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories/index_cat');
+Route::resource('categories', CategoryController::class)->except(['index_cat']);
 
 //Admin routes
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::put('/admin/makeAdmin/{id}', [AdminController::class, 'makeAdmin'])->name('admin.makeAdmin');
+Route::put('/admin/demoteAdmin/{id}', [AdminController::class, 'demoteAdmin'])->name('admin.demoteAdmin');
+Route::get('admin/users', [AdminController::class, 'index'])->name('admin/users');
+//Route::resource('admin', AdminController::class)->except(['index']);
+//Route::put('/admin/depromote/{id}', [UserController::class, 'depromote'])->name('admin.depromote');

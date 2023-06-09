@@ -10,7 +10,19 @@
         </div>
     </div>
 </header>
-    <div class="container">
+
+
+
+<div class="container">
+    <div class="col-lg-6">
+
+         @auth
+        @if(Auth::user()->is_admin)
+            <a href="{{ route('posts.create') }}" class="btn btn-primary">Add Posts</a>
+        @endif
+        @endauth
+
+        <br><br>
 
         @if (session('status'))
             <div class="alert alert-success" role="alert">
@@ -46,10 +58,6 @@
 
             </ul>
         @endforeach
-        @auth
-        @if(Auth::user()->is_admin)
-            <a href="{{ route('faq.create') }}" class="btn btn-primary">Add Question</a>
-        @endif
-        @endauth
+        </div>
     </div>
 @endsection

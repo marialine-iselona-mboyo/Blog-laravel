@@ -13,10 +13,10 @@ class ProfileController extends Controller
      *
      * @return void
      */
-    //public function __construct()
-    //{
-    //    $this->middleware('auth');
-    //}
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
 
     /**
      * Show the application dashboard.
@@ -52,7 +52,6 @@ class ProfileController extends Controller
 
     public function edit()
     {
-
         $user = Auth::user();
         return view('users/edit', compact('user'));
 
@@ -62,7 +61,7 @@ class ProfileController extends Controller
     public function update($id, Request $request){
         $user = User::findOrFail($id);
 
-        if($user->user_id != Auth::user()->id){
+        if($user->id != Auth::user()->id){
           abort(403);
         }
 
@@ -71,22 +70,28 @@ class ProfileController extends Controller
             'email'         => 'required|min:10',
             'date_of_birth' => 'required|date',
             'about_me'      => 'required|min:20',
+            'avatar'        => 'image|max:2048',
             'update_at'     => now(),
         ]);
+
 
         $user->username = $validated['username'];
         $user->email = $validated['email'];
         $user->date_of_birth = $validated['date_of_birth'];
         $user->about_me = $validated['about_me'];
+        //$user->save();
+
+        if($request->hasFile('avatar')){
+            $filename = $request->file('avatar')->getClientOriginalName();
+            $request->file('avatar')->storeAs('avatars',$filename,'public');
+            $user->avatar = $filename;
+        }
+
+
         $user->save();
 
-        return redirect()->route('users/profile')->with('status', 'Profile Succesfully Edited');
+        return redirect()->route('users/profile', $user->username)->with('status', 'Profile Succesfully Edited');
 
       }
-
-    public function adminIndex()
-    {
-        return view('admin/profile');
-    }
 
 }

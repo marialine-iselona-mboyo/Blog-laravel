@@ -18,7 +18,7 @@
     And of course, all those persons who made these documentations below. I wouldn't have learn all of this without this.
 
     <h4>Resources</h4>
-    <h5>Login & Register</h5>
+    <h5>Login & Register:</h5>
     <ul>
         <li><a href="https://laravel.com/docs/10.x">Installation</a></li>
         <li><a href="https://laravel.com/docs/5.7/authentication">Authentication</a></li>
@@ -29,30 +29,36 @@
 
     <br>
 
-    <h5>Profile</h5>
+    <h5>Contact Form sources:</h5>
     <ul>
-        <li><a href="https://www.youtube.com/watch?v=9zzX2fbkzWU&ab_channel=CodingNepal">Login Form Validation using HTML CSS & Javascript</a></li>
-        <li><a href="https://www.youtube.com/watch?v=3GsKEtBcGTk&ab_channel=dcode">How to Build a Login & Sign Up Form with HTML, CSS & JavaScript - Web Development Tutorial</a></li>
-        <li><a href="https://www.youtube.com/watch?v=UAu7cMuu0BI&ab_channel=CodifyAcademy">How to build a login system with JavaScript</a></li>
-        <li><a href="https://medium.com/swlh/how-to-create-your-first-login-page-with-html-css-and-javascript-602dd71144f1">How to create your first login page with HTML, CSS and JavaScript</a></li>
-        <li><a href="https://bootsnipp.com/snippets/mpoWl">Simple login form - Bootsnipp style colorgraph</a></li>
-        <li><a href="https://bootsnipp.com/snippets/8o7X">Mix & Match Login</a></li>
-        <li><a href="https://www.youtube.com/watch?v=ZS_FG60sDG8">Registering a new user to our login app using JavaScript</a></li>
-        <li><a href="https://mdbootstrap.com/docs/standard/extended/registration/">Registration form</a></li>
-        <li><a href="https://codeshack.io/basic-login-system-nodejs-express-mysql/#gettingstarted">Basic Login System with Node.js, Express, and MySQL</a></li>
+        <li><a href="https://www.positronx.io/laravel-contact-form-example-tutorial/">Laravel 9 Contact Form Example Tutorial</a></li>
+        <li><a href="https://www.youtube.com/watch?v=9_Of7xOTetQ&t=156s&ab_channel=SurfsideMedia">Laravel 8 Tutorial - Contact Form</a></li>
+        <li><a href="https://www.freecodecamp.org/news/how-to-setup-a-contact-page-in-laravel/">How to Setup a Contact Page in Laravel With and Without Attachments</a></li>
+        <li><a href="https://welcm.uk/blog/creating-a-contact-form-for-your-laravel-website">Creating a contact form for your Laravel website</a></li>
+        <li><a href="https://www.youtube.com/watch?v=Y-iNNti_rRg&ab_channel=CodeWithTony">#39 Create Contact Form | Laravel 9 Essentials | Laravel 9 Tutorial</a></li>
+        <li>Receiving mails:</li>
+        <li><a href="http://https://mailtrap.io/home">Mailtrap</a></li>
     </ul>
 
     <br>
 
-    <h5>Quote Generator</h5>
+    <h5>Category</h5>
     <ul>
-        <li><a href="https://tekolio.com/how-to-create-a-random-quote-generator-with-random-color/">How to Create a Random Quote Generator using an API?</a></li>
-        <li><a href="https://www.codeleaks.io/random-quote-generator-using-html-css-and-javascript/#JavaScript_Section">HOW TO BUILD RANDOM QUOTE GENERATOR USING HTML, CSS AND JS?</a></li>
-        <li><a href="https://freshman.tech/random-quote-machine/">Build your first JavaScript App — A Random Quote Generator</a></li>
-        <li><a href="https://dev.to/codemediaweb/random-quote-generator-using-javascript-and-api-20ce">Random Quote Generator using JavaScript and API</a></li>
-        <li><a href="https://www.youtube.com/watch?v=6iIWBSu3ttY&ab_channel=TheFieryCoder">Build a Random Quote Generator using HTML, CSS & JavaScript</a></li>
-        <li><a href="https://www.youtube.com/watch?v=aUPeASfr944&ab_channel=DeepakKumar">JavaScript Fetch API - Quote Generator</a></li>
-        <li><a href="https://www.youtube.com/watch?v=2TjvDPNBgXo&ab_channel=GeekProbin">Random Quote Generator Using API | Vanilla JS Project</a></li>
+        <li><a href="https://lukasmarkevicius.com/blog/how-to-create-categories-and-subcategories-using-laravel">How to Create Categories and Subcategories using Laravel</a></li>
+        <li><a href="https://www.youtube.com/watch?v=U72zfOiRn-Q&ab_channel=EasyLearning">#22 Creating Categories in Laravel</a></li>
+        <li><a href="https://www.youtube.com/watch?v=VfD-lmFTEM4&ab_channel=EasyLearning">#23 Storing Categories in Laravel</a></li>
+    </ul>
+    <br>
+
+    <h5>FAQ</h5>
+    <ul>
+        <li><a href="https://github.com/LaravelDaily/Laravel-KnowledgeBase-FAQ">LaravelDaily/Laravel-KnowledgeBase-FAQ</a></li>    </ul>
+    </ul>
+    <br>
+
+    <h5>Quotes</h5>
+    <ul>
+        <li><a href="https://type.fit/api/quotes">https://type.fit/api/quotes</a></li>
     </ul>
 
     <br>

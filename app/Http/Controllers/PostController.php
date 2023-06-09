@@ -22,7 +22,8 @@ class PostController extends Controller
 
     public function show($id){
       $post = Post::findOrFail($id);
-      return view('posts.show', compact('post'));
+      $comments = $post->comments;
+      return view('posts.show', compact('post', 'comments'));
     }
 
     public function create(){
@@ -38,6 +39,7 @@ class PostController extends Controller
       $validated = $request->validate([
         'title'       => 'required|min:3',
         'content'     => 'required|min:20',
+        'image'       => 'required|image',
       ]);
 
       // If error
@@ -48,9 +50,10 @@ class PostController extends Controller
       $post->save();
 
       // Adding image to post
-      $imageName = $post->id .'.'. $request->file->getClientOriginalExtension();
-      $request->file->move(public_path('/uploads'), $imageName);
+      $imageName = $post->id .'.'. $request->image->getClientOriginalExtension();
+      $request->image->move(public_path('images'), $imageName);
 
+      $post = Auth()->user;
       $post->image = $imageName;
       $post->save();
 
@@ -80,11 +83,20 @@ class PostController extends Controller
       $validated = $request->validate([
         'title'       => 'required|min:3',
         'content'     => 'required|min:20',
+        'image'        => 'image|max:2048',
         'update_at'   => now(),
       ]);
 
       $post->title = $validated['title'];
       $post->message = $validated['content'];
+
+      if($request->hasFile('image')){
+        $filename = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('images',$filename,'public');
+        $post->image = $filename;
+    }
+
+
       $post->save();
 
       return redirect()->route('posts/index')->with('status', 'Post edited');

@@ -41,7 +41,9 @@
                             <div class="col-md-6">
                                 <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="file" value="{{ old('file') }}" required >
 
-                                <img src="/images/{{ Auth::user()->image }}" style="width:80px;margin-top: 10px;">
+                                @if (isset($post) && $post->image)
+                                    <img src="storage/images/{{ $post->image }}" style="width:80px;margin-top: 10px;">
+                                @endif
 
                                 @error('file')
                                     <span class="invalid-feedback" role="alert">

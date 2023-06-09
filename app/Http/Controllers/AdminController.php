@@ -15,31 +15,7 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('admin.index', compact('users'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        return view('admin.users', compact('users'));
     }
 
     /**
@@ -58,7 +34,7 @@ class AdminController extends Controller
         $user = User::find($id);
 
         $user->update($request->all());
-        return redirect()->route('admin.index')->with('success', 'User has been updated');
+        return redirect()->route('admin.users')->with('success', 'User has been updated');
     }
 
     /**
@@ -69,7 +45,7 @@ class AdminController extends Controller
         $user = User::find($id);
 
         $user->delete();
-        return redirect()->route('admin.index')->with('success', 'User has been deleted');
+        return redirect()->route('admin.users')->with('success', 'User has been deleted');
     }
 
     public function makeAdmin(User $user)
@@ -80,6 +56,17 @@ class AdminController extends Controller
 
         $user->is_admin = true;
         $user->save();
-        return redirect()->route('admin.index')->with('success', 'The user role has been updated');
+        return redirect()->route('admin/users')->with('success', 'The user role has been updated');
+
+    }
+
+    public function demoteAdmin(User $user) {
+        if (!Auth::user()->is_admin) {
+            abort(403, "You don't have access");
+        }
+
+        $user->is_admin = false;
+        $user->save();
+        return redirect()->route('admin/users')->with('success', 'The user role has been updated');
     }
 }

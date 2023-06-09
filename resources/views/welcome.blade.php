@@ -34,7 +34,7 @@
                         @if (Route::has('login'))
                             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                                 @auth
-                                    <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" style="text-decoration: none; color: grey">Profile</a>
+                                    <a href="{{ route('users/profile', Auth::user()->name) }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" style="text-decoration: none; color: grey">Profile</a>
                                 @else
                                     <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" style="text-decoration: none; color: grey">Log in</a>
 
@@ -68,23 +68,31 @@
 
                         <!-- Blog post-->
                         @foreach ($posts as $post)
-                        <div class="col-lg-6">
+                        <div >
 
-                            <div class="card mb-4">
+                            <div class="card mb-2">
 
                                 <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <div class="card-body">
+                                    <div class="small text-muted">
+                                        <small>
+                                            Posted by <a href="{{ route('users/profile', $post->user->name) }}" style="text-decoration: none; color: black">
+                                            {{ $post->user->username }}</a> the {{ $post->created_at->format('d/m/Y \a\t H:i') }}
+                                        </small>
+                                        <br>
+                                    </div>
+                                    <h4 class="card-title"><a href="{{ route('posts.show', $post->id) }}" style="text-decoration: none; color: black">{{ $post->title }}</a></h4>
+                                    <p class="card-text">{{ $post->message }}</p>
+                                    <hr>
+                                    The post has {{ $post->likes()->count() }} likes
 
-                                <div class="small text-muted">
-                                    <small>
-                                        Posted by <a href="{{ route('users/profile', $post->user->name) }}" style="text-decoration: none; color: black">
-                                        {{ $post->user->username }}</a> the {{ $post->created_at->format('d/m/Y \a\t H:i') }}
-                                    </small>
-                                    <br>
+                                    <hr>
+                                    <h4>Display Comments</h4>
+                                    @foreach($post->comments as $comment)
+                                        <p class="card-text">{{ $comment->content }}</p>
+                                    @endforeach
                                 </div>
-                                <h4 class="card-title"><a href="{{ route('posts.show', $post->id) }}" style="text-decoration: none; color: black">{{ $post->title }}</a></h4>
-                                <p class="card-text">{{ $post->message }}</p>
-                                <hr>
-                                The post has {{ $post->likes()->count() }} likes
+
                             </div>
 
                         </div>
