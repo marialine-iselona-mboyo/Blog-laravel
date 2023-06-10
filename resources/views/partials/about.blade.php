@@ -2,7 +2,7 @@
 
 
 @section('content')
-
+<div class="container">
     <h1>About the project</h1>
 
     <p>Hi, my name is Marialine. <br>
@@ -56,6 +56,35 @@
     </ul>
     <br>
 
+    <h5>Comments</h5>
+    <ul>
+        <li>
+            <a href="https://raviyatechnical.medium.com/laravel-advance-comment-system-tutorial-from-scratch-e744581cdac9">
+                Laravel Advance | Comment System Tutorial from Scratch
+            </a>
+        </li>
+        <li>
+            <a href="https://www.itsolutionstuff.com/post/laravel-57-comment-system-tutorial-from-scratchexample.html">
+                Laravel - Comment System Tutorial from Scratch
+            </a>
+        </li>
+        <li>
+            <a href="https://www.youtube.com/watch?v=Z9Ykn5l_65o&ab_channel=CodeArtisanLab">
+                Laravel Tutorials|Add comment for post|Laravel Blog Website|Laravel 8 Tutorial
+            </a>
+        </li>
+
+    </ul>
+
+    <br>
+
+    <h5>Posts</h5>
+    <ul>
+        <li>Guestbook - Backend Web</li>
+    </ul>
+
+    <br>
+
     <h5>Quotes</h5>
     <ul>
         <li><a href="https://type.fit/api/quotes">https://type.fit/api/quotes</a></li>
@@ -88,5 +117,7 @@
         <li><a href="
         marialine.iselona.mboyo@student.ehb.be">Marialine ISELONA MBOYO</a></li>
     </ul>
+</div>
+
 
 @endsection

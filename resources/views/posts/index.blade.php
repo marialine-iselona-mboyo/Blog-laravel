@@ -20,7 +20,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
 
 
             @auth
@@ -39,10 +39,10 @@
                 @endif
 
                 @foreach ($posts as $post)
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <div class="card mb-4">
                         <a href="{{ route('posts.show', $post->id) }}">
-                            <img class="card-img-top" src="/storage/images/{{$post->image}}" alt="..." />
+                            <img class="card-img-top" src="{{asset('images/' . $post->image )}}" style="width:554px;height:400px;margin-top: 10px;" alt="..." />
                         </a>
                         <div class="card-body">
                             <div class="small text-muted">
@@ -56,6 +56,23 @@
                             <p class="card-text">{{ $post->message }}</p>
                             The post has {{ $post->likes()->count() }} likes
                             <br><br>
+
+                            <hr>
+                            <br><br>
+
+                            <h4>Display Comments</h4>
+
+                            @foreach($post->comments as $comment)
+                                <div>
+                                    <p>{{ $comment->content }}</p>
+                                    <small>Commented by <a href="{{ route('users/profile', $comment->user->username) }}">
+                                        {{ $comment->user->username }}</a> the {{ $comment->created_at->format('d/m/Y \a\t H:i') }}
+                                    </small>
+                                </div>
+                            @endforeach
+
+                        <br><br>
+
                             @auth
                                 @if($post->user_id == Auth::user()->id)
                                     <button>

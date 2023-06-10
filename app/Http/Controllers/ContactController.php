@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\Message;
 use Mail;
 
 class ContactController extends Controller
@@ -53,5 +54,24 @@ class ContactController extends Controller
         });
 
         return back()->with('success', 'Message has been sent! Thank you for contacting us!');
+    }
+
+    public function submitForm(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+        $message = new Message();
+        $message->name = $request->input('name');
+        $message->email = $request->input('email');
+        $message->subject = $request->input('subject');
+        $message->message = $request->input('message');
+        $message->save();
+
+        return redirect()->route('emails/show-messages', $message->id);
     }
 }

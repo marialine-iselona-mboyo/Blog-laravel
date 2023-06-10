@@ -20,7 +20,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
 
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
+                <a class="navbar-brand" href="{{ url('/') }}">NoName</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -54,7 +54,6 @@
             <div class="container">
                 <div class="text-center my-5">
                     <h1 class="fw-bolder">Welcome Petit Scarabée!</h1>
-                    <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
                 </div>
             </div>
         </header>
@@ -72,7 +71,7 @@
 
                             <div class="card mb-2">
 
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <a href="#!"><img class="card-img-top" src="{{asset('images/' . $post->image )}}" style="width:847px;height:400px;margin-top: 10px;" alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted">
                                         <small>
@@ -90,6 +89,9 @@
                                     <h4>Display Comments</h4>
                                     @foreach($post->comments as $comment)
                                         <p class="card-text">{{ $comment->content }}</p>
+                                        <small>Commented by <a href="{{ route('users/profile', $comment->user->username) }}">
+                                            {{ $comment->user->username }}</a> the {{ $comment->created_at->format('d/m/Y \a\t H:i') }}
+                                        </small>
                                     @endforeach
                                 </div>
 

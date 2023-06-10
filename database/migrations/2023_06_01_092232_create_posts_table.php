@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('message');
             $table->integer('user_id');
-            $table->text('image')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

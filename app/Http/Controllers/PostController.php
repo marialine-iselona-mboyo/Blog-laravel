@@ -50,14 +50,14 @@ class PostController extends Controller
       $post->save();
 
       // Adding image to post
-      $imageName = $post->id .'.'. $request->image->getClientOriginalExtension();
-      $request->image->move(public_path('images'), $imageName);
+      $image = $request->file('image');
+      $imageName = $post->id .'.'. $image->getClientOriginalExtension();
+      $image->move(public_path('images'), $imageName);
 
-      $post = Auth()->user;
       $post->image = $imageName;
       $post->save();
 
-      return redirect()->route('index')->with('status', 'Post added');
+      return redirect()->route('posts/index')->with('status', 'Post added');
 
     }
 
@@ -90,11 +90,11 @@ class PostController extends Controller
       $post->title = $validated['title'];
       $post->message = $validated['content'];
 
-      if($request->hasFile('image')){
-        $filename = $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('images',$filename,'public');
-        $post->image = $filename;
-    }
+      $image = $request->file('image');
+      $imageName = $post->id .'.'. $image->getClientOriginalExtension();
+      $image->move(public_path('images'), $imageName);
+
+      $post->image = $imageName;
 
 
       $post->save();

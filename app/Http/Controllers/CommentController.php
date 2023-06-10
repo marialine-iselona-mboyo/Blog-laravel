@@ -15,6 +15,12 @@ class CommentController extends Controller
         $this->middleware('auth');
     }
 
+    public function index()
+    {
+    $comments = Comment::all();
+    return view('posts.index', compact('post_id','comments'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -23,19 +29,6 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-
-    	/*$request->validate([
-            'content'=>'required',
-        ]);
-
-        $input = $request->all();
-        $input['user_id'] = auth()->user()->id;
-
-        Comment::create($input);
-
-        return back();*/
-
 
         $comment = new Comment;
         $comment->user_id = Auth::user()->id;
@@ -45,5 +38,48 @@ class CommentController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function edit($id)
+    {
+        $comment = Comment::find($id);
+
+        if ($comment->user_id != Auth::user()->id) {
+            abort(403);
+        }
+
+        return view('posts.edit', compact('comment'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $comment = Comment::find($id);
+
+        if ($comment->user_id != Auth::user()->id) {
+            abort(403);
+        }
+
+        $validated = $request->validate([
+            'content'     => 'required|min:20',
+        ]);
+
+        $comment->content = $validated['content'];
+
+        $comment->save();
+
+        return redirect()->route('posts.index')->with('status', 'Comment has been updated');
+    }
+
+    public function destroy($postId, $commentId)
+    {
+        $comment = Comment::findOrFail($commentId);
+
+        if ($comment->user_id != Auth::user()->id) {
+            abort(403);
+        }
+
+        $comment->delete();
+
+        return redirect()->route('posts.show', $postId)->with('status', 'Succesfully deleted');
     }
 }

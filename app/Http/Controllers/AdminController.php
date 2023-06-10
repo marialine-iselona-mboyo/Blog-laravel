@@ -48,23 +48,25 @@ class AdminController extends Controller
         return redirect()->route('admin.users')->with('success', 'User has been deleted');
     }
 
-    public function makeAdmin(User $user)
+    public function makeAdmin($id)
     {
         if (!Auth::user()->is_admin) {
             abort(403, "You don't have access");
         }
 
+        $user = User::findOrFail($id);
         $user->is_admin = true;
         $user->save();
         return redirect()->route('admin/users')->with('success', 'The user role has been updated');
 
     }
 
-    public function demoteAdmin(User $user) {
+    public function demoteAdmin($id) {
         if (!Auth::user()->is_admin) {
             abort(403, "You don't have access");
         }
 
+        $user = User::findOrFail($id);
         $user->is_admin = false;
         $user->save();
         return redirect()->route('admin/users')->with('success', 'The user role has been updated');

@@ -39,10 +39,9 @@ Route::get('partials/contact', [App\http\Controllers\ContactController::class, '
 Route::post('partials/contact', [App\http\Controllers\ContactController::class, 'store'])->name('partials/contact.store');
 //To show messages
 Route::get('emails/show-messages', [MessageController::class, 'index'])->name('emails/show-messages');
-Route::get('emails/messages/{id}', [MessageController::class, 'show'])->name('emails/show-messages.show');
+Route::get('emails/show-messages/{id}', [MessageController::class, 'show'])->name('emails/show-messages.show');
 
 //About routes
-//Route::view('about', 'index)->name('about'); //becase it is an static page
 Route::get('partials/about', [App\http\Controllers\AboutController::class, 'index'])->name('partials/about');
 
 //Posts routes
@@ -54,6 +53,10 @@ Route::get('like/{postid}', [LikeController::class, 'like'])->name('like');
 
 //Comments routes
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::get('/posts/{postId}/comments', 'CommentController@index')->name('comments.index');
+Route::put('/posts/{postId}/comments/{commentId}', 'CommentController@update')->name('comments.update');
+Route::delete('/posts/{postId}/comments/{commentId}', 'CommentController@destroy')->name('comments.destroy');
+
 
 
 //Profile routes
@@ -73,5 +76,4 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::put('/admin/makeAdmin/{id}', [AdminController::class, 'makeAdmin'])->name('admin.makeAdmin');
 Route::put('/admin/demoteAdmin/{id}', [AdminController::class, 'demoteAdmin'])->name('admin.demoteAdmin');
 Route::get('admin/users', [AdminController::class, 'index'])->name('admin/users');
-//Route::resource('admin', AdminController::class)->except(['index']);
-//Route::put('/admin/depromote/{id}', [UserController::class, 'depromote'])->name('admin.depromote');
+

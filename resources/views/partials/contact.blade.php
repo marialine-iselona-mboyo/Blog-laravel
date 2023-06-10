@@ -8,7 +8,7 @@
                     <h2>Contact Us</h2>
                 </div>
             </div>
-        
+
             <div class="col-md-6">
                 <!-- Success message -->
                 @if(Session::has('success'))
@@ -16,7 +16,7 @@
                         {{Session::get('success')}}
                     </div>
                 @endif
-                <form action="" method="post" action="{{ route('partials/contact.store') }}">
+                <form action="" method="post" action="{{ route('partials/contact.store', 'emails/show-messages.submitForm') }}">
                     @csrf
                     <div >
                         <label for="name" class="mr-4">Name</label>
@@ -37,11 +37,11 @@
                     <button type="submit">Submit</button>
                 </form>
             </div>
-            
+
         </div>
 
         <br><br><br>
-        
+
         <footer>
             <p><span style="font-weight: bold;">MIM</span> HOSPITAL</p>
                 <p>Aa Street &#8725; 1070 Anderlecht &#8725;

@@ -31,8 +31,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    What is the name of the site?
+                    Noname
                 </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -66,6 +67,13 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+
+                        <a class="nav-link " href="{{ route('posts/index') }}">{{ __('Posts') }}</a>
+
+                        <a class="nav-link " href="{{ route('faq/index') }}">{{ __('FAQ') }}</a>
+
+                        <a class="nav-link " href="{{ route('partials/about') }}">{{ __('About') }}</a>
+
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -90,10 +98,6 @@
 
                                     <a class="dropdown-item" href="{{ route('users/profile', auth()->user()->name) }}">{{ __('Profile') }}</a>
 
-                                    <a class="dropdown-item" href="{{ route('posts/index') }}">{{ __('Posts') }}</a>
-
-                                    <a class="dropdown-item" href="{{ route('faq/index') }}">{{ __('FAQ') }}</a>
-
                                     @auth
                                         @if (Auth::user()->is_admin)
                                         <a class="dropdown-item" href="{{ route('categories/index_cat') }}">{{ __('Categories') }}</a>
@@ -101,9 +105,6 @@
                                         <a class="dropdown-item" href="{{ route('emails/show-messages') }}">{{ __('Messages') }}</a>
                                         @endif
                                     @endauth
-
-
-                                    <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
