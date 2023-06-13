@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MessageController;
 use App\Models\Post;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +26,10 @@ use App\Models\Post;
 
 //Welcome page
 Route::get('/', function () {
+    $categories = Category::take(3)->get();
     $posts = Post::all();
-    return view('welcome', compact('posts'));
+    return view('welcome', compact('categories', 'posts'));
 });
-
 
 Auth::routes();
 
@@ -53,11 +54,10 @@ Route::get('like/{postid}', [LikeController::class, 'like'])->name('like');
 
 //Comments routes
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
-Route::get('/posts/{postId}/comments', 'CommentController@index')->name('comments.index');
-Route::put('/posts/{postId}/comments/{commentId}', 'CommentController@update')->name('comments.update');
-Route::delete('/posts/{postId}/comments/{commentId}', 'CommentController@destroy')->name('comments.destroy');
-
-
+Route::get('/posts/{postId}/comments', [CommentController::class, 'index'])->name('comments.index');
+Route::get('/posts/{postId}/comments/{commentId}/edit', [CommentController::class, 'edit'])->name('comments.edit');
+Route::put('/posts/{postId}/comments/{commentId}', [CommentController::class, 'update'])->name('comments.update');
+Route::delete('/posts/{postId}/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 //Profile routes
 Route::get('users/{name}', [ProfileController::class, 'index'])->name('users/profile');
@@ -69,6 +69,7 @@ Route::resource('/faq', FAQController::class)->except(['index']);
 
 //Categories routes
 Route::get('categories/index_cat', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories/index_cat');
+Route::get('/categories/{category}', 'CategoryController@show')->name('categories/show_cat');
 Route::resource('categories', CategoryController::class)->except(['index_cat']);
 
 //Admin routes

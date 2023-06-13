@@ -71,7 +71,6 @@ class ProfileController extends Controller
             'date_of_birth' => 'required|date',
             'about_me'      => 'required|min:20',
             'avatar'        => 'image|max:2048',
-            'update_at'     => now(),
         ]);
 
 
@@ -90,7 +89,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return redirect()->route('users/profile', $user->username)->with('status', 'Profile Succesfully Edited');
+        return redirect()->route('users/profile', ['name' => $user->name])->with('status', 'Profile Succesfully Edited');
 
       }
 

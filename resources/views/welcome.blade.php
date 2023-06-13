@@ -71,7 +71,7 @@
 
                             <div class="card mb-2">
 
-                                <a href="#!"><img class="card-img-top" src="{{asset('images/' . $post->image )}}" style="width:847px;height:400px;margin-top: 10px;" alt="..." /></a>
+                                <img class="card-img-top" src="{{asset('images/' . $post->image )}}" style="height:400px;margin-top: 10px;" alt="..." />
                                 <div class="card-body">
                                     <div class="small text-muted">
                                         <small>
@@ -122,16 +122,9 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">Web Design</a></li>
-                                        <li><a href="#!">HTML</a></li>
-                                        <li><a href="#!">Freebies</a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        <li><a href="#!">JavaScript</a></li>
-                                        <li><a href="#!">CSS</a></li>
-                                        <li><a href="#!">Tutorials</a></li>
+                                        @foreach ($categories as $category)
+                                            <li><a href="{{ route('categories.show', $category->id) }}">{{ $category->name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>

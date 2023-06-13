@@ -18,7 +18,7 @@
 
          @auth
         @if(Auth::user()->is_admin)
-            <a href="{{ route('posts.create') }}" class="btn btn-primary">Add Posts</a>
+            <a href="{{ route('posts.create') }}" class="btn btn-primary">Add FAQ</a>
         @endif
         @endauth
 
@@ -32,7 +32,11 @@
 
         @foreach ($categories as $category)
         <br>
-            <h3>{{ $category->name }}</h3>
+            <h3>
+                <a href="{{ route('categories.show', $category->id) }}">
+                    {{ $category->name }}
+                </a>
+            </h3>
             <br>
             <ul>
                 @foreach ($category->faqs as $faq)

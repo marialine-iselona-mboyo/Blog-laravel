@@ -8,11 +8,18 @@
                 <div class="card-header">Edit Comment</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('comment.update', $comment->id) }}">
+                    <form method="POST" action="{{ route('comments.update', ['postId' => $postId, 'commentId' => $commentId]) }}">
                         @method('PUT')
                         @csrf
 
-                        <textarea name="content">{{ $comment->content }}</textarea>
+                        <div class="form-group">
+                            <label for="content">Comment Content</label>
+                            <textarea class="form-control" id="content" name="content" rows="3">
+                                {{ $comment->content }}
+                            </textarea>
+                        </div>
+
+                        <!--<textarea name="content">{ $comment->content }}</textarea>-->
 
                         <button type="submit">Edit</button>
                     </form>

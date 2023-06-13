@@ -41,26 +41,6 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <!-- Does not have an account -->
-                        @guest
-                            @if (Route::has('partials/about'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('faq/index') }}">{{ __('FAQ Page') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('partials/contact'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
-                                </li>
-                            @endif
-                            @if (Route::has('posts/index'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('posts/index') }}">{{ __('Posts') }}</a>
-                                </li>
-                            @endif
-
-                        @endguest
 
                     </ul>
 
@@ -70,9 +50,9 @@
 
                         <a class="nav-link " href="{{ route('posts/index') }}">{{ __('Posts') }}</a>
 
-                        <a class="nav-link " href="{{ route('faq/index') }}">{{ __('FAQ') }}</a>
+                        <a class="nav-link " href="{{ route('faq/index') }}">{{ __('FAQ Page') }}</a>
 
-                        <a class="nav-link " href="{{ route('partials/about') }}">{{ __('About') }}</a>
+                        <a class="nav-link" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
 
                         <!-- Authentication Links -->
                         @guest
@@ -105,6 +85,8 @@
                                         <a class="dropdown-item" href="{{ route('emails/show-messages') }}">{{ __('Messages') }}</a>
                                         @endif
                                     @endauth
+
+                                    <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

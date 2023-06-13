@@ -5,6 +5,7 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col ">
           <div class="card">
+
             <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; ">
 
                 <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
@@ -14,7 +15,7 @@
                         <div class="col-md-6">
 
                             <img src="/storage/avatars/{{ Auth::user()->avatar }}"
-                            style="width:110px; margin-left: 15px; margin-top:10px"
+                            style="width:150px;height:100px; margin-left: 15px; margin-top:10px"
                             class="d-flex flex-column">
 
                             @error('avatar')
@@ -60,10 +61,20 @@
                   <p name="about_me" id="about_me" cols="50" rows="4">{{ $user->about_me}}</p>
                 <br><br>
 
+                <h5>Created Posts</h5>
+                @if (Auth::user()->is_admin)
+                    @foreach($user->posts as $post)
+                        <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a><br>
+                    @endforeach
+                @endif
+
+                <hr>
+
                 <h5>Liked Posts</h5>
                 @foreach($user->likes as $like)
                     <a href="{{ route('posts.show', $like->post_id) }}">{{ $like->post->title }}</a><br>
                 @endforeach
+
               </div>
             </div>
 

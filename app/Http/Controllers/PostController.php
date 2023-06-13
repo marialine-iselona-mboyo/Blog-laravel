@@ -42,19 +42,17 @@ class PostController extends Controller
         'image'       => 'required|image',
       ]);
 
+      $imageName = time() . '.' . $request->image->extension();
+      $request->image->move(public_path('images'), $imageName);
+
       // If error
-      $post = new Post;
-      $post->title = $validated['title'];
-      $post->message = $validated['content'];
-      $post->user_id = Auth::user()->id;
-      $post->save();
+      $post = new Post([
+        'title' => $request->get('title'),
+        'image' => $imageName,
+        'message' => $request->get('content'),
+        'user_id' => Auth::user()->id
+    ]);
 
-      // Adding image to post
-      $image = $request->file('image');
-      $imageName = $post->id .'.'. $image->getClientOriginalExtension();
-      $image->move(public_path('images'), $imageName);
-
-      $post->image = $imageName;
       $post->save();
 
       return redirect()->route('posts/index')->with('status', 'Post added');
@@ -84,18 +82,17 @@ class PostController extends Controller
         'title'       => 'required|min:3',
         'content'     => 'required|min:20',
         'image'        => 'image|max:2048',
-        'update_at'   => now(),
       ]);
 
       $post->title = $validated['title'];
       $post->message = $validated['content'];
 
-      $image = $request->file('image');
-      $imageName = $post->id .'.'. $image->getClientOriginalExtension();
-      $image->move(public_path('images'), $imageName);
-
-      $post->image = $imageName;
-
+      if($request->hasFile('image')){
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images'), $imageName);
+        $post->image = $imageName;
+      }
 
       $post->save();
 

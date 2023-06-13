@@ -19,7 +19,7 @@
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->birthday }}</td>
+                        <td>{{ $user->date_of_birth }}</td>
                         <td>{{ $user->is_admin ? 'Yes' : 'No' }}</td>
                         <td>
                             @if (Auth::user()->is_admin)

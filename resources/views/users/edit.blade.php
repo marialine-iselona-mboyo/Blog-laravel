@@ -46,7 +46,7 @@
                                 <label for="dateofbirth" class="col-md-4 col-form-label text-md-end">{{ __('Date of Birth') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date_of_birth" value="{{ old('date') }}" required>
+                                    <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date_of_birth" value="{{ $user->date_of_birth }}" required>
 
                                     @error('date')
                                         <span class="invalid-feedback" role="alert">
@@ -60,7 +60,7 @@
                                 <label for="about_me" class="col-md-4 col-form-label text-md-end">{{ __('About me') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea name="about_me" id="about_me" type="text" class="form-control @error('about_me') is-invalid @enderror" value="{{ old('about_me') }}" required cols="39" rows="5"></textarea>
+                                    <textarea name="about_me" id="about_me" type="text" class="form-control @error('about_me') is-invalid @enderror" value="" required cols="39" rows="5">{{ $user->about_me }}</textarea>
                                     @error('about_me')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

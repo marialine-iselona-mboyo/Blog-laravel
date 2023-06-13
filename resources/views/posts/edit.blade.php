@@ -9,17 +9,7 @@
 
                 <div class="card-body">
 
-                    @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-                    <form method="POST" action="{{ route('posts.update', $post->id) }}">
+                    <form method="POST" action="{{ route('posts.update', $post->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
@@ -43,9 +33,7 @@
                             <div class="col-md-6">
                                 <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{ old('image') }}" required >
 
-                                @if (isset($post) && $post->image)
-                                    <img src="{{asset('images/' . $post->image )}}" style="width:400px;height:400px;margin-top: 10px;">
-                                @endif
+                                <img src="{{ asset('images/' . $post->image) }}" style="width:200px;height:200px;margin-top: 10px;">
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -54,6 +42,7 @@
                                 @enderror
                             </div>
                         </div>
+
 
                         <div class="form-group row">
                             <label for="title" class="col-md-4 col-form-label text-md-right">Content</label>

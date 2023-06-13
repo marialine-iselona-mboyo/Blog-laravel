@@ -8,11 +8,14 @@
                 <div class="card-header">Delete Comment</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('comment.destroy', $comment->id) }}">
+                    <p>Are you sure you want to delete this comment?</p>
+
+                    <form method="POST" action="{{ route('comments.destroy', $comment->id) }}">
                         @method('DELETE')
                         @csrf
-
-                        <button type="submit">Delete</button>
+                        <input type="submit" value="Delete Comment"
+                        onclick="return confirm('Are you sure you want to delete this comment?');">
+                        <button type="submit" class="btn btn-danger">Delete Comment</button>
                     </form>
                 </div>
             </div>

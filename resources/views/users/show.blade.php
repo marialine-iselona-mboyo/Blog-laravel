@@ -45,7 +45,17 @@
                 <h3>About me</h3>
                   <p name="about_me" id="about_me" cols="50" rows="4">{{ $user->about_me}}</p>
                 <br><br>
-                <h6>Liked Posts</h6>
+
+                <h6>Created Posts</h5>
+                @if (Auth::user()->is_admin)
+                    @foreach($user->posts as $post)
+                        <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a><br>
+                    @endforeach
+                @endif
+
+                <hr>
+
+                <h5>Liked Posts</h5>
                   @foreach($user->likes as $like)
                     <a href="{{ route('posts.show', $like->post_id) }}">{{ $like->post->title }}</a><br>
                   @endforeach

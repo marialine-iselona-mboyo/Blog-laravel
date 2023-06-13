@@ -8,12 +8,14 @@
                 <div class="card-header">{{ $post->title }}</div>
 
                 <a href="{{ route('posts.show', $post->id) }}">
-                    <img class="card-img-top" src="{{asset('images/' . $post->image )}}" style="width:847px;height:400px;margin-top: 10px;" alt="..." />
+                    <img class="card-img-top" src="{{asset('images/' . $post->image )}}" style="height:300px;margin-top: 10px;" alt="..." />
                 </a>
 
                 <div class="card-body">
 
-                        <small>Posted by <a href="{{ route('users/profile', $post->user->name) }}">{{ $post->user->name }}</a> the {{ $post->created_at->format('d/m/Y \a\t H:i') }}</small><br>
+                        <small>Posted by <a href="{{ route('users/profile', $post->user->username) }}">
+                            {{ $post->user->username }}</a> the {{ $post->created_at->format('d/m/Y \a\t H:i') }}
+                        </small><br>
                         <br>
                         {{ $post->message }}
 
@@ -27,9 +29,9 @@
                           <br>
                         @endauth
                         Post has {{ $post->likes()->count() }} likes
-                        <br><br>
+                        <br>
                         <hr>
-                        <br><br>
+                        <br>
 
                         <h4>Display Comments</h4>
 
@@ -40,18 +42,26 @@
                                     {{ $comment->user->username }}</a> the {{ $comment->created_at->format('d/m/Y \a\t H:i') }}
                                 </small>
                                 <br>
-                                <form action="{{ route('comments.update', ['post_id' => $post->id, 'commentId' => $comment->id]) }}" method="POST">
-                                    @method('PUT')
-                                    @csrf
-                                    <input type="text" name="content" value="{{ $comment->content }}">
-                                    <button type="submit">Edit</button>
-                                </form>
-                                <br>
-                                <form action="{{ route('comments.destroy', ['post_id' => $post->id, 'commentId' => $comment->id]) }}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <button type="submit">Delete</button>
-                                </form>
+                                @auth
+                                    @if ($comment->user_id == Auth::user()->id)
+                                        <button>
+                                            <a href="{{ route('comments.edit', ['postId' => $post->id, 'commentId' => $comment->id]) }}"
+                                            style="text-decoration: none; color: black; background-color:white;
+                                            border-radius: 25%; border-color: gray">
+                                            Edit Comment
+                                            </a>
+                                        </button>
+                                    @endif
+                                        <br><br>
+                                    <form method="POST" action="{{ route('comments.destroy', ['comment' => $comment->id, 'postId' => $post->id]) }}">
+                                        @method('DELETE')
+                                        @csrf
+
+                                        <button type="submit" class="btn btn-danger">Delete Comment</button>
+                                    </form>
+
+                                @endauth
+
                                 <br>
                             </div>
                         @endforeach
@@ -72,16 +82,6 @@
                                     <input type="submit" class="btn btn-success" value="Add Comment" />
                                 </div>
                             </form>
-
-                            @if (Auth::user()->user_id)
-                                <form method="POST" action="{{ route('comment.destroy', ['postId' => $post->id, 'commentId' => $comment->id]) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                        <input type="submit" value="Delete Comment" onclick="return confirm('Are you sure you want to delete this comment?');">
-                                        <button type="submit">Delete</button>
-                                </form>
-                            @endif
-                            <br><br>
                         @endauth
                 </div>
             </div>

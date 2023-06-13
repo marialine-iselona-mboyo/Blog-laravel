@@ -15,10 +15,10 @@ class CommentController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index($postId)
     {
-    $comments = Comment::all();
-    return view('posts.index', compact('post_id','comments'));
+        $comments = Comment::where('post_id', $postId)->get();
+        return view('posts.index', compact('postId', 'comments'));
     }
 
     /**
@@ -40,23 +40,23 @@ class CommentController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit($postId , $commentId)
     {
-        $comment = Comment::find($id);
+        $comment = Comment::find($commentId);
 
         if ($comment->user_id != Auth::user()->id) {
-            abort(403);
+            abort(403, 'Unauthorized');
         }
 
-        return view('posts.edit', compact('comment'));
+        return view('comments.edit', compact('comment', 'postId', 'commentId'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $postId , $commentId)
     {
-        $comment = Comment::find($id);
+        $comment = Comment::findOrFail($commentId);
 
         if ($comment->user_id != Auth::user()->id) {
-            abort(403);
+            abort(403, 'Unauthorized');
         }
 
         $validated = $request->validate([
@@ -67,19 +67,19 @@ class CommentController extends Controller
 
         $comment->save();
 
-        return redirect()->route('posts.index')->with('status', 'Comment has been updated');
+        return redirect()->route('posts.show', $postId)->with('status', 'Comment has been updated');
     }
 
-    public function destroy($postId, $commentId)
+    public function destroy($commentId)
     {
         $comment = Comment::findOrFail($commentId);
 
         if ($comment->user_id != Auth::user()->id) {
-            abort(403);
+            abort(403, 'Unauthorized');
         }
 
         $comment->delete();
 
-        return redirect()->route('posts.show', $postId)->with('status', 'Succesfully deleted');
+        return redirect()->back()->with('success', 'Comment deleted successfully');
     }
 }
