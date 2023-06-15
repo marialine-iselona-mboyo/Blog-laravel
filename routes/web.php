@@ -9,7 +9,8 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\MessageController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\GenreController;
 use App\Models\Post;
 use App\Models\Category;
 
@@ -27,7 +28,7 @@ use App\Models\Category;
 //Welcome page
 Route::get('/', function () {
     $categories = Category::take(3)->get();
-    $posts = Post::all();
+    $posts = Post::take(3)->get();
     return view('welcome', compact('categories', 'posts'));
 });
 
@@ -38,9 +39,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Contact routes
 Route::get('partials/contact', [App\http\Controllers\ContactController::class, 'index'])->name('partials/contact');
 Route::post('partials/contact', [App\http\Controllers\ContactController::class, 'store'])->name('partials/contact.store');
-//To show messages
-Route::get('emails/show-messages', [MessageController::class, 'index'])->name('emails/show-messages');
-Route::get('emails/show-messages/{id}', [MessageController::class, 'show'])->name('emails/show-messages.show');
 
 //About routes
 Route::get('partials/about', [App\http\Controllers\AboutController::class, 'index'])->name('partials/about');

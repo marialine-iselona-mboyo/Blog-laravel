@@ -82,7 +82,6 @@
                                         @if (Auth::user()->is_admin)
                                         <a class="dropdown-item" href="{{ route('categories/index_cat') }}">{{ __('Categories') }}</a>
                                         <a class="dropdown-item" href="{{ route('admin/users') }}">{{ __('Users') }}</a>
-                                        <a class="dropdown-item" href="{{ route('emails/show-messages') }}">{{ __('Messages') }}</a>
                                         @endif
                                     @endauth
 

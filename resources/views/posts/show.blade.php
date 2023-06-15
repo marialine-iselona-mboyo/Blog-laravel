@@ -53,12 +53,16 @@
                                         </button>
                                     @endif
                                         <br><br>
-                                    <form method="POST" action="{{ route('comments.destroy', ['comment' => $comment->id, 'postId' => $post->id]) }}">
+
+                                    @if ($comment->user_id == Auth::user()->id)
+                                        <form method="POST" action="{{ route('comments.destroy', ['comment' => $comment->id, 'postId' => $post->id]) }}">
                                         @method('DELETE')
                                         @csrf
 
                                         <button type="submit" class="btn btn-danger">Delete Comment</button>
-                                    </form>
+                                        </form>
+                                    @endif
+
 
                                 @endauth
 

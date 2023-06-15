@@ -53,7 +53,9 @@ class PostController extends Controller
         'user_id' => Auth::user()->id
     ]);
 
+
       $post->save();
+
 
       return redirect()->route('posts/index')->with('status', 'Post added');
 

@@ -25,6 +25,11 @@
         <li><a href="https://www.youtube.com/watch?v=UPhb6ZDJzdI&ab_channel=Webslesson">Laravel 9 Custom Auth Login Registration Tutorial </a></li>
         <li><a href="https://www.youtube.com/watch?v=KgB3wntZfzI&ab_channel=WisdomDiala">Laravel 9: How to create Login with email or username authentication system</a></li>
         <li><a href="https://www.youtube.com/watch?v=Ervti0O1wgo&ab_channel=WebTechKnowledge">How To Make Login And Register System In Laravel Step By Step | Laravel Authentication Tutorial</a></li>
+        <li>Admin: </li>
+        <li><a href="https://www.youtube.com/watch?v=ckh_AXlMLgo&ab_channel=LearningPoints">
+            Multi login system using middleware | User Login | Admin Login | Laravel 9 | Learning Points</a></li>
+        <li><a href="https://www.youtube.com/watch?v=6ubzdIeb4XI&list=PL6tf8fRbavl3cdOFzjb7KFqzHtyG-69Br&ab_channel=CodeWithTony">
+            Laravel Auth Role Create Admin Middleware To Protect Routes</a></li>
     </ul>
 
     <br>
@@ -106,8 +111,6 @@
             <a href="https://mdbootstrap.com/docs/standard/extended/profiles/#section-6">Bootstrap Profile - free examples, templates & tutorial (mdbootstrap.com)</a>
         </dd>
         <br>
-        <dt>Admin layout</dt>
-        <dd>//</dd>
     </dl>
 
     <br><br>
