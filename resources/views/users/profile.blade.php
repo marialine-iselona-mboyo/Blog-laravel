@@ -61,8 +61,8 @@
                   <p name="about_me" id="about_me" cols="50" rows="4">{{ $user->about_me}}</p>
                 <br><br>
 
-                <h5>Created Posts</h5>
                 @if (Auth::user()->is_admin)
+                <h5>Created Posts</h5>
                     @foreach($user->posts as $post)
                         <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a><br>
                     @endforeach

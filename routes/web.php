@@ -9,8 +9,6 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\TagController;
-use App\Http\Controllers\GenreController;
 use App\Models\Post;
 use App\Models\Category;
 

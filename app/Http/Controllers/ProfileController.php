@@ -91,6 +91,6 @@ class ProfileController extends Controller
 
         return redirect()->route('users/profile', ['name' => $user->name])->with('status', 'Profile Succesfully Edited');
 
-      }
+    }
 
 }
