@@ -28,31 +28,51 @@
 </head>
 <body >
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Noname
-                </a>
+        <header data-bs-theme="dark">
+            <nav class="navbar navbar-dark bg-dark shadow-sm">
+              <div class="container">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
+                  <strong>NoName</strong>
+                </a>
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('posts/index') }}">{{ __('Posts') }}</a>
+
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('faq/index') }}">{{ __('FAQ Page') }}</a>
+
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
+
+                <li class="nav-item dropdown navbar-brand d-flex align-items-center">
+                    @auth
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->username }}
+                    </a>
+                    @endauth
+
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        @auth
+                        <a class="dropdown-item" href="{{ route('users/profile', auth()->user()->name) }}">{{ __('Profile') }}</a>
+                        @endauth
+
+                        @auth
+                            @if (Auth::user()->is_admin)
+                            <a class="dropdown-item" href="{{ route('categories/index_cat') }}">{{ __('Categories') }}</a>
+                            <a class="dropdown-item" href="{{ route('genres/index-genre') }}">{{ __('Genres') }}</a>
+                            <a class="dropdown-item" href="{{ route('admin/users') }}">{{ __('Users') }}</a>
+                            @endif
+                        @endauth
+
+                        <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
+                    </div>
+                </li>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                  <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
+                <div class="collapse navbar-collapse" id="navbarHeader">
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-
-                        <a class="nav-link " href="{{ route('posts/index') }}">{{ __('Posts') }}</a>
-
-                        <a class="nav-link " href="{{ route('faq/index') }}">{{ __('FAQ Page') }}</a>
-
-                        <a class="nav-link" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
 
                         <!-- Authentication Links -->
                         @guest
@@ -70,24 +90,8 @@
                         @else
 
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->username }}
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-                                    <a class="dropdown-item" href="{{ route('users/profile', auth()->user()->name) }}">{{ __('Profile') }}</a>
-
-                                    @auth
-                                        @if (Auth::user()->is_admin)
-                                        <a class="dropdown-item" href="{{ route('categories/index_cat') }}">{{ __('Categories') }}</a>
-                                        <a class="dropdown-item" href="{{ route('genres/index-genre') }}">{{ __('Genres') }}</a>
-                                        <a class="dropdown-item" href="{{ route('admin/users') }}">{{ __('Users') }}</a>
-                                        @endif
-                                    @endauth
-
-                                    <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
-
+                                <div class="navbar-toggler" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -102,8 +106,10 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-        </nav>
+
+              </div>
+            </nav>
+        </header>
 
 
         <main class="py-4" style="margin:15px">

@@ -13,12 +13,12 @@
         @foreach ($genres as $genre)
             <ul>
                 <li>{{$genre->name}}</li>
-
+                <br>
                 @foreach ($genre->posts as $post)
                     <p>{{$post->title}}</p>
                     <p>{{$post->message}}</p>
                 @endforeach
-
+                <br>
             </ul>
         @endforeach
     </div>

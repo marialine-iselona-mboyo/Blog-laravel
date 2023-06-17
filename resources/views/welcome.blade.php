@@ -17,38 +17,88 @@
     </head>
     <body class="antialiased">
         <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
+        <header data-bs-theme="dark">
+            <nav class="navbar navbar-dark bg-dark shadow-sm">
+              <div class="container">
 
-                <a class="navbar-brand" href="{{ url('/') }}">NoName</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <!--<li class="nav-item"><a class="nav-link" href="#">Home</a></li>-->
-                        <li class="nav-item"><a class="nav-link" href="{{ route('posts/index') }}">Posts</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('faq/index') }}">FAQ Page</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('partials/contact') }}">Contact</a></li>
-                    </ul>
+                <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
+                  <strong>NoName</strong>
+                </a>
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('posts/index') }}">{{ __('Posts') }}</a>
 
-                    <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-                        @if (Route::has('login'))
-                            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                                @auth
-                                    <a href="{{ route('users/profile', Auth::user()->name) }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" style="text-decoration: none; color: grey">Profile</a>
-                                @else
-                                    <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" style="text-decoration: none; color: grey">Log in</a>
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('faq/index') }}">{{ __('FAQ Page') }}</a>
 
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" style="text-decoration: none; color: grey">Register</a>
-                                    @endif
-                                @endauth
-                            </div>
-                        @endif
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
+
+                <li class="nav-item dropdown navbar-brand d-flex align-items-center">
+                    @auth
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->username }}
+                    </a>
+                    @endauth
+
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        @auth
+                        <a class="dropdown-item" href="{{ route('users/profile', auth()->user()->name) }}">{{ __('Profile') }}</a>
+                        @endauth
+
+                        @auth
+                            @if (Auth::user()->is_admin)
+                            <a class="dropdown-item" href="{{ route('categories/index_cat') }}">{{ __('Categories') }}</a>
+                            <a class="dropdown-item" href="{{ route('genres/index-genre') }}">{{ __('Genres') }}</a>
+                            <a class="dropdown-item" href="{{ route('admin/users') }}">{{ __('Users') }}</a>
+                            @endif
+                        @endauth
+
+                        <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
                     </div>
+                </li>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarHeader">
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+
+                            <li class="nav-item dropdown">
+
+                                <div class="navbar-toggler" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
                 </div>
 
-            </div>
-        </nav>
+              </div>
+            </nav>
+        </header>
         <!-- Page header with logo and tagline-->
         <header class="py-5 bg-light border-bottom mb-4">
             <div class="container">
@@ -82,6 +132,7 @@
                                     </div>
                                     <h4 class="card-title"><a href="{{ route('posts.show', $post->id) }}" style="text-decoration: none; color: black">{{ $post->title }}</a></h4>
                                     <p class="card-text">{{ $post->message }}</p>
+                                    <p>Genre: {{$post->genre->name}}</p>
                                     <hr>
                                     The post has {{ $post->likes()->count() }} likes
 
@@ -138,7 +189,13 @@
         </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+            <div class="container">
+                <p class="float-end mb-1">
+                    <a href="#">Back to top</a>
+                </p>
+                <p class="mb-1 text-white">Copyright &copy; NoName 2023</p>
+                <p class="mb-0 text-white">Made by Marialine Iselona Mboyo</p>
+            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

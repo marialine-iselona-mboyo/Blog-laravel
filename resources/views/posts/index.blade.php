@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.post-layout')
 
 @section('content')
 
-<header class="py-3 bg-light border-bottom mb-4">
-    <div class="container">
-        <div class="text-center">
-            <h1 class="fw-bolder">Welcome Petit Scarabée!</h1>
-            <p class="lead mb-0">
+<header class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Welcome Petit Scarabée!</h1>
+            <p class="lead text-body-secondary">
                 <i>“While I'm writing, I'm far away; <br>
                 and when I come back, I've gone.”</i>
             </p>
@@ -18,119 +18,112 @@
     </div>
 </header>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8">
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
 
-
-            @auth
-            @if(Auth::user()->is_admin)
-                <a href="{{ route('posts.create') }}" class="btn btn-primary">Add Posts</a>
-            @endif
-            @endauth
-
-            <br><br>
-
-            <div class="row">
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
+                @auth
+                @if(Auth::user()->is_admin)
+                    <a href="{{ route('posts.create') }}" class="btn btn-primary">Add Posts</a>
                 @endif
+                @endauth
 
-                @foreach ($posts as $post)
-                <div class="col-lg-8">
-                    <div class="card mb-4">
-                        <a href="{{ route('posts.show', $post->id) }}">
-                            <img class="card-img-top" src="{{asset('images/' . $post->image )}}" style="height:300px;margin-top: 10px;" alt="..." />
-                        </a>
-                        <div class="card-body">
-                            <div class="small text-muted">
-                                <small>
-                                    Posted by <a href="{{ route('users/profile', $post->user->name) }}" style="text-decoration: none; color: black">
-                                    {{ $post->user->username }}</a> the {{ $post->created_at->format('d/m/Y \a\t H:i') }}
-                                </small>
-                                <br>
-                            </div>
-                            <h4 class="card-title"><a href="{{ route('posts.show', $post->id) }}" style="text-decoration: none; color: black">{{ $post->title }}</a></h4>
-                            <p class="card-text">{{ $post->message }}</p>
-                            <p>Genre: {{$post->genre->name}}</p>
-                            The post has {{ $post->likes()->count() }} likes
-                            <br>
+                <br><br>
 
-                            <hr>
-                            <br>
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-                            <h4>Display Comments</h4>
-
-                            @foreach($post->comments as $comment)
-                                <div>
-                                    <p>{{ $comment->content }}</p>
-                                    <small>Commented by <a href="{{ route('users/profile', $comment->user->username) }}">
-                                        {{ $comment->user->username }}</a> the {{ $comment->created_at->format('d/m/Y \a\t H:i') }}
+                    @foreach ($posts as $post)
+                    <div class="card shadow-sm">
+                            <a href="{{ route('posts.show', $post->id) }}">
+                                <img class="bd-placeholder-img card-img-top" src="{{asset('images/' . $post->image )}}" style="height:300px;margin-top: 10px;" alt="..." />
+                            </a>
+                            <div class="card-body">
+                                <div class="card-text small text-muted">
+                                    <small>
+                                        Posted by <a href="{{ route('users/profile', $post->user->name) }}" style="text-decoration: none; color: black">
+                                        {{ $post->user->username }}</a> the {{ $post->created_at->format('d/m/Y \a\t H:i') }}
                                     </small>
+                                    <br>
                                 </div>
+                                <h4 class="card-title"><a href="{{ route('posts.show', $post->id) }}" style="text-decoration: none; color: black">{{ $post->title }}</a></h4>
+                                <p class="card-text">{{ $post->message }}</p>
+                                <p>Genre: {{$post->genre->name}}</p>
+                                The post has {{ $post->likes()->count() }} likes
+                                <br>
+
+                                <hr>
+                                <br>
+
+                                <h4>Display Comments</h4>
+
+                                @foreach($post->comments as $comment)
+                                    <div>
+                                        <p>{{ $comment->content }}</p>
+                                        <small>Commented by <a href="{{ route('users/profile', $comment->user->username) }}">
+                                            {{ $comment->user->username }}</a> the {{ $comment->created_at->format('d/m/Y \a\t H:i') }}
+                                        </small>
+                                    </div>
+
+                                    @auth
+                                        @if ($comment->user_id == Auth::user()->id)
+                                            <button>
+                                                <a href="{{ route('comments.edit', ['postId' => $post->id, 'commentId' => $comment->id]) }}" style="text-decoration: none; color: black; background-color:white;
+                                                border-radius: 25%; border-color: gray">
+                                                Edit Comment
+                                                </a>
+                                            </button>
+                                        @endif
+
+                                        <br><br>
+
+                                        @if ($comment->user_id == Auth::user()->id)
+                                            <form method="POST" action="{{ route('comments.destroy', ['comment' => $comment->id, 'postId' => $post->id]) }}">
+                                            @method('DELETE')
+                                            @csrf
+
+                                            <button type="submit" class="btn btn-danger">Delete Comment</button>
+                                            </form>
+                                        @endif
+
+                                    @endauth
+
+                                @endforeach
+
+                            <br><br>
 
                                 @auth
-                                    @if ($comment->user_id == Auth::user()->id)
+                                    @if($post->user_id == Auth::user()->id)
                                         <button>
-                                            <a href="{{ route('comments.edit', ['postId' => $post->id, 'commentId' => $comment->id]) }}" style="text-decoration: none; color: black; background-color:white;
+                                            <a href="{{ route('posts.edit', $post->id) }}" style="text-decoration: none; color: black; background-color:white;
                                             border-radius: 25%; border-color: gray">
-                                            Edit Comment
+                                            Edit Post
+                                            </a>
+                                        </button>
+                                    @else
+                                        <button>
+                                            <a href="{{ route('like', $post->id) }}" style="text-decoration: none; color: black; background-color:white;
+                                            border-radius: 25%; border-color: gray">
+                                            Like Post
                                             </a>
                                         </button>
                                     @endif
-
-                                    <br><br>
-
-                                    @if ($comment->user_id == Auth::user()->id)
-                                        <form method="POST" action="{{ route('comments.destroy', ['comment' => $comment->id, 'postId' => $post->id]) }}">
-                                        @method('DELETE')
-                                        @csrf
-
-                                        <button type="submit" class="btn btn-danger">Delete Comment</button>
-                                        </form>
-                                    @endif
-
+                                    <br>
                                 @endauth
-
-                            @endforeach
-
-                        <br><br>
-
-                            @auth
-                                @if($post->user_id == Auth::user()->id)
-                                    <button>
-                                        <a href="{{ route('posts.edit', $post->id) }}" style="text-decoration: none; color: black; background-color:white;
-                                        border-radius: 25%; border-color: gray">
-                                        Edit Post
-                                        </a>
-                                    </button>
-                                @else
-                                    <button>
-                                        <a href="{{ route('like', $post->id) }}" style="text-decoration: none; color: black; background-color:white;
-                                        border-radius: 25%; border-color: gray">
-                                        Like Post
-                                        </a>
-                                    </button>
-                                @endif
-                                <br>
-                            @endauth
-                        </div>
+                            </div>
                     </div>
-                </div>
-                @endforeach
-
+                    @endforeach
             </div>
         </div>
+
+
     </div>
-
-
 </div>
 
-<!-- Footer-->
-<footer class="py-5 bg-dark">
-<div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-</footer>
+
 
 @endsection

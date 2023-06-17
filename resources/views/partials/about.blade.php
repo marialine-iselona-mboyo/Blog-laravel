@@ -102,13 +102,21 @@
         <dt>App/Welcome layout:</dt>
         <dd>
             - Mix of automatic generated layout (npm run) and bootsrap: <br>
-            <a href="https://startbootstrap.com/template/blog-home">Blog Home - Free Bootstrap 5 Blog Template - Start Bootstrap</a>
+            <a href="https://startbootstrap.com/template/blog-home">Blog Home - Free Bootstrap 5 Blog Template - Start Bootstrap</a><br>
+            <a href="https://getbootstrap.com/docs/5.3/examples/album/">Album (Navigation bar)</a>
         </dd>
         <br>
         <dt>Profile layout:</dt>
         <dd>
             - Mix of automatic generated layout (npm run) and bootsrap: <br>
-            <a href="https://mdbootstrap.com/docs/standard/extended/profiles/#section-6">Bootstrap Profile - free examples, templates & tutorial (mdbootstrap.com)</a>
+            <a href="https://mdbootstrap.com/docs/standard/extended/profiles/#section-6">Bootstrap Profile - free examples, templates & tutorial (mdbootstrap.com)</a><br>
+            <a href="https://getbootstrap.com/docs/5.3/examples/album/">Album (Navigation bar)</a>
+        </dd>
+        <br>
+        <dt>Posts layout:</dt>
+        <dd>
+            - Bootsrap: <br>
+            <a href="https://getbootstrap.com/docs/5.3/examples/album/">Album</a>
         </dd>
         <br>
     </dl>
