@@ -13,6 +13,7 @@ class Post extends Model
         'title',
         'image',
         'message',
+        'genre_id',
         'user_id'
     ];
 
@@ -27,6 +28,11 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany('App\Models\Comment');
+    }
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
     }
 }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Like;
+use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -31,7 +32,9 @@ class PostController extends Controller
           abort(403, 'Only admins can create posts');
       }
 
-      return view('posts.create');
+      $genres = Genre::all();
+
+      return view('posts.create', compact('genres'));
     }
 
     public function store(Request $request){
@@ -39,6 +42,7 @@ class PostController extends Controller
       $validated = $request->validate([
         'title'       => 'required|min:3',
         'content'     => 'required|min:20',
+        'genre_id'    => 'required',
         'image'       => 'required|image',
       ]);
 
@@ -50,6 +54,7 @@ class PostController extends Controller
         'title' => $request->get('title'),
         'image' => $imageName,
         'message' => $request->get('content'),
+        'genre_id' => $request->get('genre_id'),
         'user_id' => Auth::user()->id
     ]);
 
@@ -83,6 +88,7 @@ class PostController extends Controller
       $validated = $request->validate([
         'title'       => 'required|min:3',
         'content'     => 'required|min:20',
+        'genre_id'    => 'required',
         'image'        => 'image|max:2048',
       ]);
 

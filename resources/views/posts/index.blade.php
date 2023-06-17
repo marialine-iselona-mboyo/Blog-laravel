@@ -54,6 +54,7 @@
                             </div>
                             <h4 class="card-title"><a href="{{ route('posts.show', $post->id) }}" style="text-decoration: none; color: black">{{ $post->title }}</a></h4>
                             <p class="card-text">{{ $post->message }}</p>
+                            <p>Genre: {{$post->genre->name}}</p>
                             The post has {{ $post->likes()->count() }} likes
                             <br>
 

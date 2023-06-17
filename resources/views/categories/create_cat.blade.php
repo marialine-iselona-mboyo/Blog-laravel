@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <h1>Create a Category</h1>
         <br><br>
-            <form method="POST" action="{{ route('categories.store') }}">
+        <form method="POST" action="{{ route('categories.store') }}">
             @csrf
 
             <div class="form-group">

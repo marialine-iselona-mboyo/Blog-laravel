@@ -93,4 +93,17 @@ class ProfileController extends Controller
 
     }
 
+    public function search(Request $request)
+    {
+        $searchQuery = $request->input('search');
+
+        $users = User::where('name', 'like', '%'.$searchQuery.'%')
+                    ->orWhere('username', 'like', '%'.$searchQuery.'%')
+                    ->orWhere('email', 'like', '%'.$searchQuery.'%')
+                    ->orWhere('about_me', 'like', '%'.$searchQuery.'%')
+                    ->get();
+
+        return view('users/search', compact('users'));
+    }
+
 }

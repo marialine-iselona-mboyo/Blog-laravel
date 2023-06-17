@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Blog') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -81,6 +81,7 @@
                                     @auth
                                         @if (Auth::user()->is_admin)
                                         <a class="dropdown-item" href="{{ route('categories/index_cat') }}">{{ __('Categories') }}</a>
+                                        <a class="dropdown-item" href="{{ route('genres/index-genre') }}">{{ __('Genres') }}</a>
                                         <a class="dropdown-item" href="{{ route('admin/users') }}">{{ __('Users') }}</a>
                                         @endif
                                     @endauth

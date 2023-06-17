@@ -105,6 +105,19 @@
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
+                    <!-- Search widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Search</div>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <form action="{{ route('users/search') }}" method="GET" role="search">
+                                    @csrf
+                                    <input class="form-control" name="search" value="" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                                    <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Categories widget-->
                     <div class="card mb-4">
                         <div class="card-header">FAQ Categories</div>

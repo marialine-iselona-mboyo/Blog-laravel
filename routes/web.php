@@ -9,6 +9,7 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\GenreController;
 use App\Models\Post;
 use App\Models\Category;
 
@@ -58,6 +59,15 @@ Route::delete('/posts/{postId}/comments/{comment}', [CommentController::class, '
 //Profile routes
 Route::get('users/{name}', [ProfileController::class, 'index'])->name('users/profile');
 Route::resource('/users', ProfileController::class);
+//Search routes
+Route::get('/users/search', [ProfileController::class, 'search'])->name('users/search');
+
+//Genres Routes
+Route::get('genres/index-genre', [GenreController::class, 'index'])->name('genres/index-genre');
+Route::get('genres/create-genre', [GenreController::class, 'create'])->name('genres/create-genre');
+Route::post('genres', [GenreController::class, 'store'])->name('genres.store');
+
+
 
 //FAQ routes
 Route::get('/faq', [App\Http\Controllers\FAQController::class, 'index'])->name('faq/index');

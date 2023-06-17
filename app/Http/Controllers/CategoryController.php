@@ -36,9 +36,6 @@ class CategoryController extends Controller
             'name' => 'required|unique:categories',
         ]);
 
-        /*Category::create($validatedData);
-        return redirect()->route('categories.index');*/
-
         Category::create([
             'name' => $request->input('name'),
         ]);
