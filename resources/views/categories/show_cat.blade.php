@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.profile-layout')
 
 @section('content')
 <h1>{{ $category->name }}</h1>

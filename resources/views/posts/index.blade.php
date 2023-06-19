@@ -38,10 +38,13 @@
                     @endif
 
                     @foreach ($posts as $post)
-                        <div class="card mb-2">
+                        <div class="card mb-2" style="width:800px">
 
                             <a href="{{ route('posts.show', $post->id) }}">
-                                <img class="bd-placeholder-img card-img-top" src="{{asset('images/' . $post->image )}}" style="height:300px;margin-top: 10px;" alt="..." />
+                                <img class="bd-placeholder-img card-img-top" src="{{asset('images/' . $post->image )}}"
+                                style="width:550px; height:450px;margin-top: 10px;display: block;
+                                margin-left: auto;margin-right: auto;"
+                                alt="..." />
                             </a>
                             <div class="card-body">
                                 <div class="card-text small text-muted">

@@ -36,14 +36,14 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Contact routes
-Route::get('partials/contact', [App\http\Controllers\ContactController::class, 'index'])->name('partials/contact');
-Route::post('partials/contact', [App\http\Controllers\ContactController::class, 'store'])->name('partials/contact.store');
+Route::get('/partials/contact', [App\http\Controllers\ContactController::class, 'index'])->name('partials/contact');
+Route::post('/partials/contact', [App\http\Controllers\ContactController::class, 'store'])->name('partials/contact.store');
 
 //About routes
-Route::get('partials/about', [App\http\Controllers\AboutController::class, 'index'])->name('partials/about');
+Route::get('/partials/about', [App\http\Controllers\AboutController::class, 'index'])->name('partials/about');
 
 //Posts routes
-Route::get('posts/index', [App\Http\Controllers\PostController::class, 'index'])->name('posts/index');
+Route::get('/posts/index', [App\Http\Controllers\PostController::class, 'index'])->name('posts/index');
 Route::resource('/posts', PostController::class);
 
 //Likes routes
@@ -56,16 +56,16 @@ Route::get('/posts/{postId}/comments/{commentId}/edit', [CommentController::clas
 Route::put('/posts/{postId}/comments/{commentId}', [CommentController::class, 'update'])->name('comments.update');
 Route::delete('/posts/{postId}/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
-//Profile routes
-Route::get('users/{name}', [ProfileController::class, 'index'])->name('users/profile');
-Route::resource('/users', ProfileController::class);
-//Search routes
+//Profile & Search routes
 Route::get('/users/search', [ProfileController::class, 'search'])->name('users/search');
+Route::get('/users/{name}', [ProfileController::class, 'index'])->name('users/profile');
+Route::resource('/users', ProfileController::class);
+
 
 //Genres Routes
-Route::get('genres/index-genre', [GenreController::class, 'index'])->name('genres/index-genre');
-Route::get('genres/create-genre', [GenreController::class, 'create'])->name('genres/create-genre');
-Route::post('genres', [GenreController::class, 'store'])->name('genres.store');
+Route::get('/genres/index-genre', [GenreController::class, 'index'])->name('genres/index-genre');
+Route::get('/genres/create-genre', [GenreController::class, 'create'])->name('genres/create-genre');
+Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
 
 
 
@@ -74,13 +74,14 @@ Route::get('/faq', [App\Http\Controllers\FAQController::class, 'index'])->name('
 Route::resource('/faq', FAQController::class)->except(['index']);
 
 //Categories routes
-Route::get('categories/index_cat', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories/index_cat');
+Route::get('/categories/index_cat', [App\Http\Controllers\CategoryController::class, 'index'])->name('categories/index_cat');
+Route::get('/categories/create_cat', [App\Http\Controllers\CategoryController::class, 'create'])->name('categories/create_cat');
 Route::get('/categories/{category}', 'CategoryController@show')->name('categories/show_cat');
-Route::resource('categories', CategoryController::class)->except(['index_cat']);
+Route::resource('categories', CategoryController::class)->except(['index_cat', 'create_cat']);
 
 //Admin routes
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::put('/admin/makeAdmin/{id}', [AdminController::class, 'makeAdmin'])->name('admin.makeAdmin');
 Route::put('/admin/demoteAdmin/{id}', [AdminController::class, 'demoteAdmin'])->name('admin.demoteAdmin');
-Route::get('admin/users', [AdminController::class, 'index'])->name('admin/users');
+Route::get('/admin/users', [AdminController::class, 'index'])->name('admin/users');
 

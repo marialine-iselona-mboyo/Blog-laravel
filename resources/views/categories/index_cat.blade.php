@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="d-flex justify-content-end mb-2">
-            <a href="{{ route('categories.create')}}" class="btn btn-success">Add Category</a>
+            <a href="{{ route('categories/create_cat')}}" class="btn btn-success">Add Category</a>
         </div>
 
 

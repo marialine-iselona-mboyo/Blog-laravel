@@ -42,8 +42,28 @@
     <p>azerty123</p>
 
     <br><br>
+    <h4>Receiving Mails</h4>
+    <ul>
+        <li><a href="http://https://mailtrap.io/home">Mailtrap</a></li>
+        <p>De informatie om toegang te krijgen tot MailTrap</p>
+        <p>Email: marialine.iselona.mboyo@student.ehb.be</p>
+        <p>Password: azerty123</p>
+    </ul>
+
+    <br><br>
+    <h4>Database Informations</h4>
+    <p>
+        DB_CONNECTION=mysql <br>
+        DB_HOST=dt5.ehb.be <br>
+        DB_PORT=3306 <br>
+        DB_DATABASE=2223BACKENDWEB01 <br>
+        DB_USERNAME=2223BACKENDWEB01 <br>
+        DB_PASSWORD=@69bwr4y <br>
+    </p>
+
+    <br><br>
     <h4>Resources</h4>
-    <h5>Login & Register:</h5>
+    <h5>Login & Register</h5>
     <ul>
         <li><a href="https://laravel.com/docs/10.x">Installation</a></li>
         <li><a href="https://laravel.com/docs/5.7/authentication">Authentication</a></li>
@@ -59,18 +79,13 @@
 
     <br>
 
-    <h5>Contact Form sources:</h5>
+    <h5>Contact Form</h5>
     <ul>
         <li><a href="https://www.positronx.io/laravel-contact-form-example-tutorial/">Laravel 9 Contact Form Example Tutorial</a></li>
         <li><a href="https://www.youtube.com/watch?v=9_Of7xOTetQ&t=156s&ab_channel=SurfsideMedia">Laravel 8 Tutorial - Contact Form</a></li>
         <li><a href="https://www.freecodecamp.org/news/how-to-setup-a-contact-page-in-laravel/">How to Setup a Contact Page in Laravel With and Without Attachments</a></li>
         <li><a href="https://welcm.uk/blog/creating-a-contact-form-for-your-laravel-website">Creating a contact form for your Laravel website</a></li>
         <li><a href="https://www.youtube.com/watch?v=Y-iNNti_rRg&ab_channel=CodeWithTony">#39 Create Contact Form | Laravel 9 Essentials | Laravel 9 Tutorial</a></li>
-        <li>Receiving mails:</li>
-        <li><a href="http://https://mailtrap.io/home">Mailtrap</a></li>
-        <p>De informatie om toegang te krijgen tot MailTrap</p>
-        <p>Email: marialine.iselona.mboyo@student.ehb.be</p>
-        <p>Password: azerty123</p>
     </ul>
 
     <br>
@@ -114,9 +129,11 @@
 
     <br>
 
-    <h5>Genre</h5>
+    <h5>Search</h5>
     <ul>
-        <li><a href="https://github.com/LaravelDaily/Laravel-KnowledgeBase-FAQ">LaravelDaily/Laravel-KnowledgeBase-FAQ</a></li>    </ul>
+        <li><a href="https://www.youtube.com/watch?v=aPYEOVDTV6E&ab_channel=CodeOnline">Laravel search function, Search data in database using Model</a></li>
+        <li><a href="https://medium.com/justlaravel/search-functionality-in-laravel-a2527282150b">Search functionality in Laravel</a></li>
+        <li><a href="https://www.youtube.com/watch?v=ddcPVtw1Kqw&ab_channel=FundaOfWebIT">Laravel 9 Ecom - Part 57: How to make Search bar for products in laravel 9 | Product Search Page</a></li>
     </ul>
     <br>
 
