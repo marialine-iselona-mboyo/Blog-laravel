@@ -88,7 +88,6 @@ class PostController extends Controller
       $validated = $request->validate([
         'title'       => 'required|min:3',
         'content'     => 'required|min:20',
-        'genre_id'    => 'required',
         'image'        => 'image|max:2048',
       ]);
 
