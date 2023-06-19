@@ -117,7 +117,7 @@
 
                         <!-- Blog post-->
                         @foreach ($posts as $post)
-                        <div >
+                        <div class="col-lg-6">
 
                             <div class="card mb-2">
 
@@ -192,6 +192,14 @@
             <div class="container">
                 <p class="float-end mb-1">
                     <a href="#">Back to top</a>
+                </p>
+                <p><span style="font-weight: bold;" class="mb-1 text-white">NoName</p>
+                <p class="mb-1 text-white">Aa Street &#8725; 1070 Anderlecht &#8725;
+                    <a href="tel:012345678" class="mb-1 text-white"> tel. 01 234 56 78</a>
+                </p>
+                <p class="mb-1 text-white">
+                    <a href="mailto:admin@ehb.be" class="mb-1 text-white">admin@ehb.be</a> &#8725;
+                    <a href="#" class="mb-1 text-white">WWW.NONAME.BE</a>
                 </p>
                 <p class="mb-1 text-white">Copyright &copy; NoName 2023</p>
                 <p class="mb-0 text-white">Made by Marialine Iselona Mboyo</p>

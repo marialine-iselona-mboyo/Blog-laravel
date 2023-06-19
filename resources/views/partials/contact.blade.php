@@ -39,21 +39,5 @@
             </div>
 
         </div>
-
-        <br><br><br>
-
-        <footer>
-            <p><span style="font-weight: bold;">MIM</span> HOSPITAL</p>
-                <p>Aa Street &#8725; 1070 Anderlecht &#8725;
-                <a href="tel:012345678"> tel. 01 234 56 78</a>
-            </p>
-            <p>
-                Opening hours: ma - vr: 10u - 12u30 &#8725; 13u30 - 18u30 &#8725; za: 10u30 - 15u30
-            </p>
-            <p>
-                <a href="mailto:admin@ehb.be">admin@ehb.be</a> &#8725;
-                <a href="#">WWW.MIMHOSPITAL.BE</a>
-            </p>
-        </footer>
     </div>
 @endsection

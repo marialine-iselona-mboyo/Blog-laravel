@@ -22,14 +22,14 @@
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <div class="col">
+                <div>
+                    @auth
+                    @if(Auth::user()->is_admin)
+                        <a href="{{ route('posts.create') }}" class="btn btn-primary">Add Posts</a>
+                    @endif
+                    @endauth
 
-                @auth
-                @if(Auth::user()->is_admin)
-                    <a href="{{ route('posts.create') }}" class="btn btn-primary">Add Posts</a>
-                @endif
-                @endauth
-
-                <br><br>
+                    <br><br>
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -38,7 +38,8 @@
                     @endif
 
                     @foreach ($posts as $post)
-                    <div class="card shadow-sm">
+                        <div class="card mb-2">
+
                             <a href="{{ route('posts.show', $post->id) }}">
                                 <img class="bd-placeholder-img card-img-top" src="{{asset('images/' . $post->image )}}" style="height:300px;margin-top: 10px;" alt="..." />
                             </a>
@@ -94,7 +95,7 @@
 
                                 @endforeach
 
-                            <br><br>
+                                <br><br>
 
                                 @auth
                                     @if($post->user_id == Auth::user()->id)
@@ -115,12 +116,11 @@
                                     <br>
                                 @endauth
                             </div>
-                    </div>
+                        </div>
                     @endforeach
+                </div>
             </div>
         </div>
-
-
     </div>
 </div>
 

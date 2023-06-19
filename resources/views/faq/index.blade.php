@@ -18,7 +18,7 @@
 
          @auth
         @if(Auth::user()->is_admin)
-            <a href="{{ route('posts.create') }}" class="btn btn-primary">Add FAQ</a>
+            <a href="{{ route('faq.create') }}" class="btn btn-primary">Add FAQ</a>
         @endif
         @endauth
 

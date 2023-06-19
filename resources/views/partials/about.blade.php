@@ -17,6 +17,31 @@
     I would like to thank all the people who have helped me from near or far. My family and friends. <br>
     And of course, all those persons who made these documentations below. I wouldn't have learn all of this without this.
 
+    <br><br>
+
+    <h4>Users</h4>
+    <h5>User information</h5>
+    <h6>Admin: </h6>
+    <p>Email: admin@ehb.be</p>
+    <p>Password: Password!321</p>
+    <br>
+    <h6>Users emails: </h6>
+    <ul>
+        <li>Jos Loops: <br> Jos.loops@ehb.be</li><br>
+        <li>Korben Dallas: <br> korben@email.be </li><br>
+        <li>Leeloo Dallas: <br> leeloo@email.be</li><br>
+        <li>John Smith:  <br> john@email.be</li><br>
+        <li>Gumball Watterson: <br> gumball@email.be</li><br>
+        <li>Darwin Watterson: <br> darwin@email.be</li><br>
+        <li>Penny Fitzgerald: <br> penny@email.be</li><br>
+        <li>Daria Morgendorffer: <br> daria@email.be</li><br>
+        <li>Not_A_Spam: <br> killjoyers@pemail.pl</li><br>
+        <li>Jane Lane: <br> jane@email.be</li><br>
+    </ul>
+    <h6>Passwords: </h6>
+    <p>azerty123</p>
+
+    <br><br>
     <h4>Resources</h4>
     <h5>Login & Register:</h5>
     <ul>
@@ -43,15 +68,21 @@
         <li><a href="https://www.youtube.com/watch?v=Y-iNNti_rRg&ab_channel=CodeWithTony">#39 Create Contact Form | Laravel 9 Essentials | Laravel 9 Tutorial</a></li>
         <li>Receiving mails:</li>
         <li><a href="http://https://mailtrap.io/home">Mailtrap</a></li>
+        <p>De informatie om toegang te krijgen tot MailTrap</p>
+        <p>Email: marialine.iselona.mboyo@student.ehb.be</p>
+        <p>Password: azerty123</p>
     </ul>
 
     <br>
 
-    <h5>Category</h5>
+    <h5>Category/Genre</h5>
     <ul>
         <li><a href="https://lukasmarkevicius.com/blog/how-to-create-categories-and-subcategories-using-laravel">How to Create Categories and Subcategories using Laravel</a></li>
         <li><a href="https://www.youtube.com/watch?v=U72zfOiRn-Q&ab_channel=EasyLearning">#22 Creating Categories in Laravel</a></li>
         <li><a href="https://www.youtube.com/watch?v=VfD-lmFTEM4&ab_channel=EasyLearning">#23 Storing Categories in Laravel</a></li>
+        <li><a href="https://www.youtube.com/watch?v=SYY_AxS5tr4&ab_channel=FundaOfWebIT">Laravel 8 Blog - 4: How to Add Category with Form Request & fetch data using eloquent in laravel 8</a></li>
+        <li><a href="https://www.youtube.com/watch?v=ym-NQ8KqLAY&ab_channel=FundaOfWebIT">Laravel 8 Blog - 15: View all Posts by Category in Laravel 8 and Fetch Category data in Navbar Link</a></li>
+        <li><a href="https://larainfo.com/blogs/laravel-9-insert-category-in-posts-crud-example">Laravel 9 Insert Category in Posts CRUD Example</a></li>
     </ul>
     <br>
 
@@ -81,6 +112,12 @@
 
     </ul>
 
+    <br>
+
+    <h5>Genre</h5>
+    <ul>
+        <li><a href="https://github.com/LaravelDaily/Laravel-KnowledgeBase-FAQ">LaravelDaily/Laravel-KnowledgeBase-FAQ</a></li>    </ul>
+    </ul>
     <br>
 
     <h5>Posts</h5>
