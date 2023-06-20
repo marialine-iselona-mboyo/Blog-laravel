@@ -52,7 +52,6 @@ Route::get('like/{postid}', [LikeController::class, 'like'])->name('like');
 //Comments routes
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 Route::get('/posts/{postId}/comments', [CommentController::class, 'index'])->name('comments.index');
-Route::get('/posts/{postId}/comments/{commentId}', [CommentController::class, 'show'])->name('comments.show');
 Route::get('/posts/{postId}/comments/{commentId}/edit', [CommentController::class, 'edit'])->name('comments.edit');
 Route::put('/posts/{postId}/comments/{commentId}', [CommentController::class, 'update'])->name('comments.update');
 Route::delete('/posts/{postId}/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
