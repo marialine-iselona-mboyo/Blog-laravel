@@ -20,7 +20,12 @@
     <br><br>
 
     <h5>GitHub Link:</h5>
-    <a href="http://https://github.com/marialine-iselona-mboyo/project-laravel/tree/master">GitHub repo</a>
+    <a href="http://https://github.com/marialine-iselona-mboyo/project-laravel/tree/master">
+        https://github.com/marialine-iselona-mboyo/project-laravel/tree/master
+    </a>
+    <p>I don't know why but the link isn't working that way, this is the link hard coded: <br>
+        https://github.com/marialine-iselona-mboyo/project-laravel/tree/master
+    </p>
 
     <br><br>
 
