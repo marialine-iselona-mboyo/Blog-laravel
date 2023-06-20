@@ -27,7 +27,7 @@
     <br>
     <h6>Users emails: </h6>
     <ul>
-        <li>Jos Loops: <br> Jos.loops@ehb.be</li><br>
+        <li>Jos Loops: <br> jos@ehb.be</li><br>
         <li>Korben Dallas: <br> korben@email.be </li><br>
         <li>Leeloo Dallas: <br> leeloo@email.be</li><br>
         <li>John Smith:  <br> john@email.be</li><br>
