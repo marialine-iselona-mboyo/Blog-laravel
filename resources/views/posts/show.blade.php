@@ -33,6 +33,20 @@
                         <hr>
                         <br>
 
+                        @auth
+                        @if(Auth::user()->is_admin)
+                          <br><br>
+                          <form method="post" action="{{ route('posts.destroy', $post->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="Delete Post" onclick="return confirm('Are you sure you want to delete this post?');">
+                          </form>
+                        @endif
+                      @endauth
+
+                      <br><br>
+                      <hr>
+
                         <h4>Display Comments</h4>
 
                         @foreach($comments as $comment)
@@ -63,7 +77,6 @@
                                         </form>
                                     @endif
 
-
                                 @endauth
 
                                 <br>
@@ -87,6 +100,7 @@
                                 </div>
                             </form>
                         @endauth
+
                 </div>
             </div>
         </div>

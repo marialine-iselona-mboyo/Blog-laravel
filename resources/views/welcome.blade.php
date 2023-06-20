@@ -143,6 +143,7 @@
                                         <small>Commented by <a href="{{ route('users/profile', $comment->user->username) }}">
                                             {{ $comment->user->username }}</a> the {{ $comment->created_at->format('d/m/Y \a\t H:i') }}
                                         </small>
+                                        <br><br>
                                     @endforeach
                                 </div>
 

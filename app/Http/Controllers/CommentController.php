@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comment;
-use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -17,8 +17,17 @@ class CommentController extends Controller
 
     public function index($postId)
     {
-        $comments = Comment::where('post_id', $postId)->get();
+        $user = Auth::user();
+        $comments = Comment::where('post_id', $postId)
+                            ->where('user_id', $user->id)
+                            ->get();
+
         return view('posts.index', compact('postId', 'comments'));
+    }
+
+    public function show($id){
+        $comment = Comment::findOrFail($id);
+        return view('comments.show', compact('comment'));
     }
 
     /**
@@ -70,9 +79,9 @@ class CommentController extends Controller
         return redirect()->route('posts.show', $postId)->with('status', 'Comment has been updated');
     }
 
-    public function destroy($commentId)
+    public function destroy(Post $postId, Comment $comment)
     {
-        $comment = Comment::findOrFail($commentId);
+        //$comment = Comment::findOrFail($commentId);
 
         if ($comment->user_id != Auth::user()->id) {
             abort(403, 'Unauthorized');

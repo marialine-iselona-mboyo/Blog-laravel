@@ -58,7 +58,26 @@
                                 <p class="card-text">{{ $post->message }}</p>
                                 <p>Genre: {{$post->genre->name}}</p>
                                 The post has {{ $post->likes()->count() }} likes
-                                <br>
+                                <br><br>
+
+                                @auth
+                                    @if($post->user_id == Auth::user()->id)
+                                        <button>
+                                            <a href="{{ route('posts.edit', $post->id) }}" style="text-decoration: none; color: black; background-color:white;
+                                            border-radius: 25%; border-color: gray">
+                                            Edit Post
+                                            </a>
+                                        </button>
+                                    @else
+                                        <button>
+                                            <a href="{{ route('like', $post->id) }}" style="text-decoration: none; color: black; background-color:white;
+                                            border-radius: 25%; border-color: gray">
+                                            Like Post
+                                            </a>
+                                        </button>
+                                    @endif
+                                    <br>
+                                @endauth
 
                                 <hr>
                                 <br>
@@ -101,23 +120,21 @@
                                 <br><br>
 
                                 @auth
-                                    @if($post->user_id == Auth::user()->id)
-                                        <button>
-                                            <a href="{{ route('posts.edit', $post->id) }}" style="text-decoration: none; color: black; background-color:white;
-                                            border-radius: 25%; border-color: gray">
-                                            Edit Post
-                                            </a>
-                                        </button>
-                                    @else
-                                        <button>
-                                            <a href="{{ route('like', $post->id) }}" style="text-decoration: none; color: black; background-color:white;
-                                            border-radius: 25%; border-color: gray">
-                                            Like Post
-                                            </a>
-                                        </button>
-                                    @endif
+                                    <h6>Add comment</h6>
                                     <br>
+                                    <form method="post" action="{{ route('comments.store') }}">
+                                    @csrf
+                                        <div class="form-group">
+                                            <textarea class="form-control" name="content"></textarea>
+                                            <input type="hidden" name="post_id" value="{{ $post->id }}" />
+                                        </div>
+                                        <br>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-success" value="Add Comment" />
+                                        </div>
+                                    </form>
                                 @endauth
+
                             </div>
                         </div>
                     @endforeach
