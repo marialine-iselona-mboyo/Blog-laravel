@@ -30,6 +30,8 @@
 
                 <a class="navbar-brand d-flex align-items-center" href="{{ route('partials/contact') }}">{{ __('Contact') }}</a>
 
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('partials/about') }}">{{ __('About') }}</a>
+
                 <li class="nav-item dropdown navbar-brand d-flex align-items-center">
                     @auth
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -49,8 +51,6 @@
                             <a class="dropdown-item" href="{{ route('admin/users') }}">{{ __('Users') }}</a>
                             @endif
                         @endauth
-
-                        <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
                     </div>
                 </li>
 

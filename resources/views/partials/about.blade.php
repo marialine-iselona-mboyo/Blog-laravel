@@ -47,7 +47,8 @@
     <p>azerty123</p>
 
     <br><br>
-    <h4>Receiving Mails</h4>
+    <h4>Contact form: </h4>
+    <h5>Receiving Mails</h5>
     <ul>
         <li><a href="http://https://mailtrap.io/home">Mailtrap</a></li>
         <p>De informatie om toegang te krijgen tot MailTrap</p>
@@ -112,6 +113,18 @@
     </ul>
     <br>
 
+
+    <h5>Posts</h5>
+    <ul>
+        <li>Guestbook - Backend Web</li>
+        <li><a href="http://https://www.section.io/engineering-education/laravel-beginners-guide-blogpost/">Building Your First Laravel Application (Blog Application)</a></li>
+        <li><a href="http://https://laraveldaily.com/post/demo-project-laravel-personal-blog">Demo Project: Laravel Personal Blog</a></li>
+        <li><a href="http://https://www.ericsdevblog.com/posts/laravel-for-beginners-1/">Laravel for Beginners</a></li>
+        <li><a href="http://https://www.youtube.com/watch?v=2bz5eleBj98&t=1992s&ab_channel=LaravelDaily">[COURSE] Laravel 9 For Beginners: Your First Project</a></li>
+    </ul>
+
+    <br>
+
     <h5>Comments</h5>
     <ul>
         <li>
@@ -140,17 +153,6 @@
         <li><a href="https://medium.com/justlaravel/search-functionality-in-laravel-a2527282150b">Search functionality in Laravel</a></li>
         <li><a href="https://www.youtube.com/watch?v=ddcPVtw1Kqw&ab_channel=FundaOfWebIT">Laravel 9 Ecom - Part 57: How to make Search bar for products in laravel 9 | Product Search Page</a></li>
     </ul>
-    <br>
-
-    <h5>Posts</h5>
-    <ul>
-        <li>Guestbook - Backend Web</li>
-        <li><a href="http://https://www.section.io/engineering-education/laravel-beginners-guide-blogpost/">Building Your First Laravel Application (Blog Application)</a></li>
-        <li><a href="http://https://laraveldaily.com/post/demo-project-laravel-personal-blog">Demo Project: Laravel Personal Blog</a></li>
-        <li><a href="http://https://www.ericsdevblog.com/posts/laravel-for-beginners-1/">Laravel for Beginners</a></li>
-        <li><a href="http://https://www.youtube.com/watch?v=2bz5eleBj98&t=1992s&ab_channel=LaravelDaily">[COURSE] Laravel 9 For Beginners: Your First Project</a></li>
-    </ul>
-
     <br>
 
     <h5>Quotes</h5>
