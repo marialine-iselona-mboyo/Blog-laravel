@@ -43,6 +43,7 @@ Route::post('/partials/contact', [App\http\Controllers\ContactController::class,
 Route::get('/partials/about', [App\http\Controllers\AboutController::class, 'index'])->name('partials/about');
 
 //Posts routes
+Route::get('/search', [ProfileController::class, 'search'])->name('users/search');
 Route::get('/posts/index', [App\Http\Controllers\PostController::class, 'index'])->name('posts/index');
 Route::resource('/posts', PostController::class);
 
@@ -57,7 +58,7 @@ Route::put('/posts/{postId}/comments/{commentId}', [CommentController::class, 'u
 Route::delete('/posts/{postId}/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
 //Profile & Search routes
-Route::get('/users/search', [ProfileController::class, 'search'])->name('users/search');
+Route::get('partials/search', [ProfileController::class, 'search'])->name('partials/search');
 Route::get('/users/{name}', [ProfileController::class, 'index'])->name('users/profile');
 Route::resource('/users', ProfileController::class);
 

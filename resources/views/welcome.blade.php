@@ -140,7 +140,7 @@
                                     <h4>Display Comments</h4>
                                     @foreach($post->comments as $comment)
                                         <p class="card-text">{{ $comment->content }}</p>
-                                        <small>Commented by <a href="{{ route('users/profile', $comment->user->username) }}">
+                                        <small>Commented by <a href="{{ route('users/profile', $comment->user->name) }}">
                                             {{ $comment->user->username }}</a> the {{ $comment->created_at->format('d/m/Y \a\t H:i') }}
                                         </small>
                                         <br><br>
@@ -162,7 +162,7 @@
                         <div class="card-header">Search</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <form action="{{ route('users/search') }}" method="GET" role="search">
+                                <form action="{{ route('partials/search', 'posts/search') }}" method="GET" role="search">
                                     @csrf
                                     <input class="form-control" name="search" value="" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
                                     <button class="btn btn-primary" id="button-search" type="submit">Go!</button>

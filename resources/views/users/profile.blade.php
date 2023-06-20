@@ -14,9 +14,18 @@
 
                         <div class="col-md-6">
 
-                            <img src="/storage/avatars/{{ Auth::user()->avatar }}"
-                            style="width:150px;height:100px; margin-left: 15px; margin-top:10px"
-                            class="d-flex flex-column">
+                            @if (Auth::check() && Auth::user()->avatar)
+                                <img src="/storage/avatars/{{ Auth::user()->avatar }}"
+                                style="width:150px;height:100px; margin-left: 15px; margin-top:10px"
+                                class="d-flex flex-column">
+
+                            @else
+                                <img src="/storage/avatars/Default.png"
+                                style="width:150px;height:100px; margin-left: 15px; margin-top:10px"
+                                class="d-flex flex-column">
+                            @endif
+
+
 
                             @error('avatar')
                                 <span class="invalid-feedback" role="alert">
@@ -25,11 +34,14 @@
                             @enderror
                         </div>
 
-                        <a href="{{ route('users.edit', ['user' => $user->id]) }}" style="z-index: 1;text-decoration: none; color: black;margin-top: 15px; margin-left: 15px">
-                            <button type="button" style="padding: 5%; background-color: white; border-color: gray;">
-                                Edit profile
-                            </button>
-                        </a>
+                        @if (Auth::check() && Auth::user()->avatar)
+                            <a href="{{ route('users.edit', ['user' => $user->id]) }}" style="z-index: 1;text-decoration: none; color: black;margin-top: 15px; margin-left: 15px">
+                                <button type="button" style="padding: 5%; background-color: white; border-color: gray;">
+                                    Edit profile
+                                </button>
+                            </a>
+                        @endif
+
 
                     </div>
 
@@ -61,7 +73,7 @@
                   <p name="about_me" id="about_me" cols="50" rows="4">{{ $user->about_me}}</p>
                 <br><br>
 
-                @if (Auth::user()->is_admin)
+                @if (Auth::check() && Auth::user()->is_admin)
                 <h5>Created Posts</h5>
                     @foreach($user->posts as $post)
                         <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a><br>

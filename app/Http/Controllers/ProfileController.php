@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
@@ -99,11 +100,12 @@ class ProfileController extends Controller
 
         $users = User::where('name', 'like', '%'.$searchQuery.'%')
                     ->orWhere('username', 'like', '%'.$searchQuery.'%')
-                    ->orWhere('email', 'like', '%'.$searchQuery.'%')
-                    ->orWhere('about_me', 'like', '%'.$searchQuery.'%')
                     ->get();
 
-        return view('users/search', compact('users'));
+        $posts= Post::where('title', 'like', '%'.$searchQuery.'%')
+                    ->get();
+
+        return view('partials/search', compact('users', 'posts'));
     }
 
 }

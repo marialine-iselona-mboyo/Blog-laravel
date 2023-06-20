@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 use App\Models\Like;
 use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
@@ -118,4 +119,5 @@ class PostController extends Controller
 
       return redirect()->route('posts/index')->with('status', 'Post deleted');
     }
+
 }

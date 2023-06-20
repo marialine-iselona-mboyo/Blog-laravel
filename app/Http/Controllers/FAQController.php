@@ -81,7 +81,7 @@ class FAQController extends Controller
         $faq = FAQ::find($id);
         $categories = Category::all();
 
-        if($faq->user_id != Auth::user()->id){
+        if(!Auth::user()->is_admin){
             abort(403);
         }
 
@@ -95,7 +95,7 @@ class FAQController extends Controller
     {
         $faq = FAQ::find($id);
 
-        if($faq->user_id != Auth::user()->id){
+        if(!Auth::user()->is_admin){
             abort(403);
         }
 
