@@ -19,6 +19,11 @@
 
     <br><br>
 
+    <h5>GitHub Link:</h5>
+    <a href="http://https://github.com/marialine-iselona-mboyo/project-laravel/tree/master">GitHub repo</a>
+
+    <br><br>
+
     <h4>Users</h4>
     <h5>User information</h5>
     <h6>Admin: </h6>
