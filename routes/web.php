@@ -66,7 +66,11 @@ Route::resource('/users', ProfileController::class);
 //Genres Routes
 Route::get('/genres/index-genre', [GenreController::class, 'index'])->name('genres/index-genre');
 Route::get('/genres/create-genre', [GenreController::class, 'create'])->name('genres/create-genre');
+Route::get('/genre/{genre}/edit', [GenreController::class, 'edit'])->name('genre.edit');
+Route::put('/genre/{genre}', [GenreController::class, 'update'])->name('genre.update');
+Route::delete('/genres/{genre}', [GenreController::class, 'destroy'])->name('genres.destroy');
 Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
+//Route::resource('genres', GenreController::class)->except(['index-genre', 'create-genre', 'store', 'edit']);
 
 
 

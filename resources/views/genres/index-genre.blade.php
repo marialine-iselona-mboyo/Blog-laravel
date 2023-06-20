@@ -12,8 +12,10 @@
         <br><br><br>
         @foreach ($genres as $genre)
             <ul>
-                <li>{{$genre->name}}</li>
-                <br>
+                <li>{{ $genre->name }}</li>
+                <a href="{{ route('genre.edit', ['genre' => $genre->id]) }}"
+                    class="btn btn-success mb-3">Edit genre</a>
+
                 @foreach ($genre->posts as $post)
                     <p>{{$post->title}}</p>
                     <p>{{$post->message}}</p>
