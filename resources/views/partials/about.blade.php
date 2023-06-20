@@ -27,16 +27,16 @@
     <br>
     <h6>Users emails: </h6>
     <ul>
-        <li>Jos Loops: <br> jos@ehb.be</li><br>
-        <li>Korben Dallas: <br> korben@email.be </li><br>
-        <li>Leeloo Dallas: <br> leeloo@email.be</li><br>
-        <li>John Smith:  <br> john@email.be</li><br>
-        <li>Gumball Watterson: <br> gumball@email.be</li><br>
-        <li>Darwin Watterson: <br> darwin@email.be</li><br>
-        <li>Penny Fitzgerald: <br> penny@email.be</li><br>
-        <li>Daria Morgendorffer: <br> daria@email.be</li><br>
-        <li>Not_A_Spam: <br> killjoyers@pemail.pl</li><br>
-        <li>Jane Lane: <br> jane@email.be</li><br>
+        <li>Jos Loops: <br> username -> Joske <br> jos@ehb.be</li><br>
+        <li>Korben Dallas: <br> username -> Korbie <br> korben@email.be </li><br>
+        <li>Leeloo Dallas: <br> username -> TheFifthElement <br> leeloo@email.be</li><br>
+        <li>John Smith:  <br> username -> EleventhDoctor <br> john@email.be</li><br>
+        <li>Gumball Watterson: <br> username -> Gumgum <br> gumball@email.be</li><br>
+        <li>Darwin Watterson: <br> username -> GumgumsBFF <br> darwin@email.be</li><br>
+        <li>Penny Fitzgerald: <br> username -> PenFitz <br> penny@email.be</li><br>
+        <li>Daria Morgendorffer: <br> username -> Mortuary༺♰༻ <br> daria@email.be</li><br>
+        <li>Not_A_Spam: <br> username -> Not_A_Spam <br> killjoyers@pemail.pl</li><br>
+        <li>Jane Lane: <br> username -> ArtsNotDead <br> jane@email.be</li><br>
     </ul>
     <h6>Passwords: </h6>
     <p>azerty123</p>
@@ -140,13 +140,19 @@
     <h5>Posts</h5>
     <ul>
         <li>Guestbook - Backend Web</li>
+        <li><a href="http://https://www.section.io/engineering-education/laravel-beginners-guide-blogpost/">Building Your First Laravel Application (Blog Application)</a></li>
+        <li><a href="http://https://laraveldaily.com/post/demo-project-laravel-personal-blog">Demo Project: Laravel Personal Blog</a></li>
+        <li><a href="http://https://www.ericsdevblog.com/posts/laravel-for-beginners-1/">Laravel for Beginners</a></li>
+        <li><a href="http://https://www.youtube.com/watch?v=2bz5eleBj98&t=1992s&ab_channel=LaravelDaily">[COURSE] Laravel 9 For Beginners: Your First Project</a></li>
     </ul>
 
     <br>
 
     <h5>Quotes</h5>
     <ul>
-        <li><a href="https://type.fit/api/quotes">https://type.fit/api/quotes</a></li>
+        <li><a href="https://www.familyfriendpoems.com/collection/famous-short-poems/">Famous Short Poems</a></li>
+        <li><a href="https://interestingliterature.com/2020/04/famous-very-short-poems-all-time/">33 of the Most Famous Very Short Poems of All Time</a></li>
+        <li><a href="https://interestingliterature.com/2021/09/scariest-frightening-poems/">10 of the Scariest Poems Ever Written</a></li>
     </ul>
 
     <br>
