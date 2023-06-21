@@ -193,6 +193,12 @@
         <br>
     </dl>
 
+    <br>
+
+    <h5>FAQ</h5>
+    <ul>
+        <li><a href="https://github.com/LaravelDaily/Laravel-KnowledgeBase-FAQ">LaravelDaily/Laravel-KnowledgeBase-FAQ</a></li>    </ul>
+    </ul>
     <br><br>
 
     <h3>Authors</h3>
