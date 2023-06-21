@@ -195,10 +195,8 @@
 
     <br>
 
-    <h5>FAQ</h5>
-    <ul>
-        <li><a href="https://github.com/LaravelDaily/Laravel-KnowledgeBase-FAQ">LaravelDaily/Laravel-KnowledgeBase-FAQ</a></li>    </ul>
-    </ul>
+    <h5>Chat GPT</h5>
+    <p>Used it when I couldn't find the explaination on the internet</p>
     <br><br>
 
     <h3>Authors</h3>
