@@ -63,7 +63,6 @@
                             @endif
                         @endauth
 
-                        <a class="dropdown-item" href="{{ route('partials/about') }}">{{ __('About') }}</a>
                     </div>
                 </li>
 
