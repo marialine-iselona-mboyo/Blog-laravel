@@ -196,7 +196,7 @@
     <br>
 
     <h5>Chat GPT</h5>
-    <p>Used it when I couldn't find the explaination on the internet</p>
+    <!--<p>Used it when I couldn't find the explaination on the internet</p>-->
     <br><br>
 
     <h3>Authors</h3>
